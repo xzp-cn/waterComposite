@@ -35,4 +35,19 @@ public class Tools
         }
         return go;
     }
+    /// <summary>
+    /// 得到3d标签预制
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="canvasScale"></param>
+    /// <returns></returns>
+    public static PanelControl GetLine(Vector3 start, Vector3 end, float canvasScale = 0.001f)
+    {
+        PanelControl lineCtrl = ResManager.GetPrefab("SceneRes/Line").GetComponent<PanelControl>();
+        lineCtrl.followStartPos.transform.localPosition = start;
+        lineCtrl.followEndPos.transform.localPosition = end;
+        lineCtrl.GetComponentInChildren<Canvas>().transform.localScale = Vector3.one * canvasScale;
+        return lineCtrl;
+    }
 }

@@ -150,6 +150,7 @@ namespace FSpace
         }
 
         public System.Func<GameObject, bool> ClickAction;
+        public System.Action<string> DragActionCallback;
         void Drag2DObj()
         {
             RaycastHit raycastHit;
@@ -180,6 +181,10 @@ namespace FSpace
                     }
                 }
 
+                if (DragActionCallback != null)
+                {
+                    DragActionCallback(_curDragObj.name);
+                }
                 if (GlobalConfig.Instance.operationModel == OperationModel.Move)
                 {
                     Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);

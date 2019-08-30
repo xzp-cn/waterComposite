@@ -2,6 +2,14 @@
 
 public class ParticlesCollsion : MonoBehaviour
 {
+    private void Awake()
+    {
+
+    }
+    public void SetParticle()
+    {
+
+    }
     /// <summary>
     /// 特效碰撞时处理
     /// </summary>

@@ -5,11 +5,12 @@ public class TextCtrl : MonoBehaviour
     Text text;
     private void Awake()
     {
-        text = GetComponent<Text>();
+        text = gameObject.GetScript<Text>();
         text.fontSize = 60;
         text.lineSpacing = 1;
         text.supportRichText = true;
 
+        text.font = Font.CreateDynamicFontFromOSFont("Arial", 50);
         text.color = Color.white;
         text.alignment = TextAnchor.UpperLeft;
     }

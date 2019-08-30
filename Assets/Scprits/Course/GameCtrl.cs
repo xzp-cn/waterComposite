@@ -14,6 +14,7 @@ public class GameCtrl : MonoBehaviour
     MRSystem msys;
     Transform root;
     Transform UI;
+    JiantouCtrl jiantouCtrl;
     public MRSystem MrSys
     {
         get
@@ -58,7 +59,7 @@ public class GameCtrl : MonoBehaviour
             string scene = sceneArray[i];
             tgs[i].transform.Find("Label").GetComponent<Text>().text = btnNames[i];
         }
-        tgs[0].isOn = true;
+        //tgs[0].isOn = true;
         tgs[0].onValueChanged.AddListener(OnElectrolyteToggleClick);
         tgs[1].onValueChanged.AddListener(OnDetectionToggleClick);
         tgs[2].onValueChanged.AddListener(OnPrincipleToggleClick);
@@ -71,10 +72,12 @@ public class GameCtrl : MonoBehaviour
             left.Find(leftBtns[i]).gameObject.SetActive(false);
         }
         Toggle[] togs = left.Find(leftBtns[1]).GetComponentsInChildren<Toggle>();
-        string[] togNames = new string[] { "蒸馏水", "滴加氢氧化钠的蒸馏水" };
+        string[] togNames = new string[] { "蒸馏水", "滴加氢氧化\n钠的蒸馏水" };
         for (int i = 0; i < togs.Length; i++)
         {
-            togs[i].name = togNames[i];
+            Text txt = togs[i].transform.Find("Label").GetComponent<Text>();
+            txt.text = togNames[i];
+            txt.fontSize = i == 1 ? 19 : 24;
             int index = i;
             togs[i].onValueChanged.AddListener((isOn) =>
             {
@@ -89,19 +92,18 @@ public class GameCtrl : MonoBehaviour
         pn.transform.SetAsFirstSibling();
 
         //场景资源加载
-        //3D
-        Transform chemical = transform.Find("chemical");
-        if (chemical == null)
+        //3D     
+        if (curScene == null)
         {
-            GameObject scene = ResManager.GetPrefab("SceneRes/chemical");
-            scene.name = "chemical";
-            scene.transform.SetParent(transform);
+            curScene = ResManager.GetPrefab("SceneRes/chemical");
+            curScene.name = "chemical";
+            curScene.transform.SetParent(transform);
         }
         root = transform.Find("root");
         if (root == null)
         {
             root = new GameObject("root").transform;
-            root.SetParent(chemical);
+            root.SetParent(curScene.transform);
             root.localPosition = Vector3.zero;
             root.localRotation = Quaternion.Euler(Vector3.zero);
             root.localScale = Vector3.one;
@@ -117,50 +119,91 @@ public class GameCtrl : MonoBehaviour
         //3d物体点击注册
         FSpace.SimpleDrag simpleDrag = Tools.GetScenesObj("SimpleDrag").GetScript<FSpace.SimpleDrag>();
         simpleDrag.ClickAction = ClickSwitchOffCallback;
-
-
+        simpleDrag.DragActionCallback = DragCallback;
 
         //黑板内容显示。         
         string blackBoadStr = "\n\u3000\u3000实验仪器:\n\u3000\u3000水电解器、学生电源、蒸馏水、滴加少量氢氧化钠的蒸馏水、火柴、玻璃棒";
         SetBlackboardShow(blackBoadStr);
+
+        //烧杯溶液标签显示。
+        Transform canvas = UI.Find("InprojectionIgnoreCanvas");
+        TextCtrl water_text = new GameObject("water").GetScript<TextCtrl>();
+        water_text.SetText("蒸馏水");
+        water_text.transform.SetParent(canvas, false);
+        water_text.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 100);
+        water_text.transform.localPosition = new Vector3(-674, -507f, 2.334f);
+        water_text.transform.SetAsFirstSibling();
+
+        TextCtrl naoh_text = new GameObject("naoh").GetScript<TextCtrl>();
+        naoh_text.SetText("NAOH溶液");
+        naoh_text.transform.SetParent(canvas, false);
+        naoh_text.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 100);
+        naoh_text.transform.localPosition = new Vector3(-883, -507, 2.334f);
+        naoh_text.transform.SetAsFirstSibling();
     }
+    /// <summary>
+    /// 设置黑板显示内容
+    /// </summary>
+    /// <param name="str"></param>
     void SetBlackboardShow(string str)
     {
         TextCtrl textCtrl = UIManager.Instance.GetUI<TextCtrl>("panelText");
         textCtrl.SetText(str);
         UIManager.Instance.SetUIDepth("panelText", 0);
     }
-
+    /// <summary>
+    /// 电解模块右侧按钮点击注册
+    /// </summary>
+    /// <param name="isOn"></param>
+    /// <param name="sibIndex"></param>
     void WaterNaohClick(bool isOn, int sibIndex)
     {
         if (isOn)
         {
-            if (sibIndex == 0)
+            root.Find("desk/tuopan/huochai").gameObject.SetActive(false);
+            if (sibIndex == 0)//蒸馏水
             {
+                root.Find("desk/tuopan/naoh").gameObject.SetActive(false);
 
+                root.Find("desk/tuopan/water").gameObject.SetActive(true);
+                root.Find("desk/tuopan/bolibang").gameObject.SetActive(true);
+
+                UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(true);
+                UI.Find("InprojectionIgnoreCanvas/naoh").gameObject.SetActive(false);
+
+                if (jiantouCtrl == null)
+                {
+                    jiantouCtrl = ResManager.GetPrefab("SceneRes/jiantou").GetScript<JiantouCtrl>();
+                }
+                jiantouCtrl.SetJiantou(new Vector3(0.0256f, -0.0143f, -0.0710f));
             }
-            else
+            else//naoh溶液
             {
+                root.Find("desk/tuopan/water").gameObject.SetActive(false);
 
+                root.Find("desk/tuopan/naoh").gameObject.SetActive(true);
+                root.Find("desk/tuopan/bolibang").gameObject.SetActive(true);
+
+                UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(false);
+                UI.Find("InprojectionIgnoreCanvas/naoh").gameObject.SetActive(true);
             }
         }
     }
-
     /// <summary>
     /// 仪器复原。
     /// </summary>
     void ResetInstruments()
     {
-        Transform water = root.Find("tuopan/water");
-        water.localPosition = new Vector3(0.5765f, -0.2132f, -0.0691f);
+        Transform water = root.Find("desk/tuopan/water");
+        water.localPosition = new Vector3(0.1423f, 0.049f, -0.0368f);
 
-        Transform naoh = root.Find("tuopan/naoh");
-        water.localPosition = new Vector3(0.0048f, 0.0489974f, -0.058f);
+        Transform naoh = root.Find("desk/tuopan/naoh");
+        naoh.localPosition = new Vector3(0.0048f, 0.0489974f, -0.058f);
 
-        Transform blb = root.Find("tuopan/bolibang");
-        water.localPosition = new Vector3(-0.103f, 0.107f, .0164f);
+        Transform blb = root.Find("desk/tuopan/bolibang");
+        blb.localPosition = new Vector3(-0.103f, 0.107f, .0164f);
 
-        Transform huochai = root.Find("tuopan/huochai");
+        Transform huochai = root.Find("desk/tuopan/huochai");
         huochai.localPosition = new Vector3(0.1629f, 0.2f, -0.2f);
 
         LiquidCtrl middle = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/middle").GetComponent<LiquidCtrl>();
@@ -190,13 +233,13 @@ public class GameCtrl : MonoBehaviour
         string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：往电解器玻璃管里注满蒸馏水，打开“通电”开关，" +
             $"观察现象\n\u3000\u3000步骤2：往电解器玻璃管里注满滴加氢氧化钠的蒸馏水，打开“通电”开关，观察现象";
         SetBlackboardShow(str);
+        Transform left = UI.Find("InprojectionIgnoreCanvas/Left");
+        Transform btn = left.Find("UIButton (1)");
+        btn.gameObject.SetActive(true);
         //重置仪器
         ResetInstruments();
         //侧边按钮显示。
-
-
     }
-
     /// <summary>
     /// 检测按钮点击事件注册。
     /// </summary>
@@ -214,7 +257,7 @@ public class GameCtrl : MonoBehaviour
 
     }
     /// <summary>
-    /// 检测按钮点击事件注册。
+    /// 原理按钮点击事件注册。
     /// </summary>
     /// <param name="isOn"></param>
     /// <param name="sceneName"></param>
@@ -248,8 +291,6 @@ public class GameCtrl : MonoBehaviour
         curScene = next;
         curScene.transform.SetParent(transform, false);
     }
-
-
     /// <summary>
     /// 3D物体点击处理
     /// </summary>
@@ -269,6 +310,13 @@ public class GameCtrl : MonoBehaviour
         }
         return click;
     }
+    void DragCallback(string name)
+    {
+        if (name == "water" || name == "naoh")
+        {
+            UI.Find("InprojectionIgnoreCanvas/" + name).gameObject.SetActive(false);
+        }
+    }
     /// <summary>
     /// 电源开关点击处理
     /// </summary>
@@ -285,19 +333,33 @@ public class GameCtrl : MonoBehaviour
         }
     }
     /// <summary>
-    /// 数据的初始化
-    /// </summary>   
-
-    /// <summary>
     /// 移除事件监听
     /// </summary>
     void RemoveAllListeners()
     {
         FSpace.SimpleDrag simpleDrag = Tools.GetScenesObj("SimpleDrag").GetScript<FSpace.SimpleDrag>();
         simpleDrag.ClickAction = null;
+        simpleDrag.DragActionCallback = null;
     }
     private void OnDestroy()
     {
 
+    }
+}
+public class JiantouCtrl : MonoBehaviour
+{
+    private void Start()
+    {
+        this.name = "jiantou";
+        Transform root = Tools.GetScenesObj("GameCtrl").transform.Find("chemical/root");
+        transform.SetParent(root, false);
+        transform.localScale = new Vector3(0.2f, 0.2f, 1);
+    }
+    /// <summary>
+    /// 设置箭头属性
+    /// </summary>
+    public void SetJiantou(Vector3 pos)
+    {
+        transform.localPosition = pos;
     }
 }

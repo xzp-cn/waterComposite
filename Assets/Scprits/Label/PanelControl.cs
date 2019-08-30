@@ -1,6 +1,4 @@
 ﻿using liu;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -14,7 +12,7 @@ public class PanelControl : MonoBehaviour
     public Transform followStartPos;
     public Transform followEndPos;
 
-    Transform selfStartPos,selfEndPos;
+    Transform selfStartPos, selfEndPos;
 
     Transform PanelCanvas;
     LineRenderer RenderLine;
@@ -70,8 +68,8 @@ public class PanelControl : MonoBehaviour
                 LookPos = Monitor23DMode.instance.camera2D.transform;
             }
         }
-        if (LookPos != null && LookPos.gameObject.activeInHierarchy && PanelCanvas)
-            PanelCanvas.LookAt(LookPos);
+        //if (LookPos != null && LookPos.gameObject.activeInHierarchy && PanelCanvas)
+        //    PanelCanvas.LookAt(LookPos);
 
         if (RenderLine != null)
         {
