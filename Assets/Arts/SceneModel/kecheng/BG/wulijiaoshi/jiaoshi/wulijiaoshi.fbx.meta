@@ -1,0 +1,591 @@
+fileFormatVersion: 2
+guid: b7e0c218da432a44e8e51c9d97d61e72
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Chemistry_lab_kejiqiang
+    100002: dengdai
+    100004: dengdai_1
+    100006: dengdai_2
+    100008: gs
+    100010: gs_01
+    100012: gs_02
+    100014: gs_03
+    100016: gs_04
+    100018: kx_yqdct_bolichaung
+    100020: kx_yqdct_chuangkuang
+    100022: kx_yqdct_diban
+    100024: kx_yqdct_men
+    100026: kx_yqdct_qiang
+    100028: kx_yqdct_tianhuaban
+    100030: liujiaodeng
+    100032: liujiaodeng_1
+    100034: liujiaodeng_2
+    100036: liujiaodeng_3
+    100038: liujiaodeng_4
+    100040: liujiaodeng_5
+    100042: liujiaodeng_6
+    100044: liujiaodeng_7
+    100046: liujiaodeng_8
+    100048: namiheigban
+    100050: namiheigban_01
+    100052: namiheigban_02
+    100054: polySurface1
+    100056: polySurface2
+    100058: pPipe1
+    100060: pPipe1 1
+    100062: pPipe1 2
+    100064: pPipe1 3
+    100066: pPipe1 4
+    100068: pPipe1 5
+    100070: pPipe10
+    100072: pPipe10 1
+    100074: pPipe11
+    100076: pPipe11 1
+    100078: pPipe12
+    100080: pPipe12 1
+    100082: pPipe13
+    100084: pPipe13 1
+    100086: pPipe14
+    100088: pPipe15
+    100090: pPipe16
+    100092: pPipe2
+    100094: pPipe2 1
+    100096: pPipe2 2
+    100098: pPipe2 3
+    100100: pPipe2 4
+    100102: pPipe2 5
+    100104: pPipe3
+    100106: pPipe3 1
+    100108: pPipe3 2
+    100110: pPipe3 3
+    100112: pPipe3 4
+    100114: pPipe3 5
+    100116: pPipe4
+    100118: pPipe4 1
+    100120: pPipe4 2
+    100122: pPipe4 3
+    100124: pPipe4 4
+    100126: pPipe4 5
+    100128: pPipe5
+    100130: pPipe5 1
+    100132: pPipe5 2
+    100134: pPipe5 3
+    100136: pPipe5 4
+    100138: pPipe5 5
+    100140: pPipe6
+    100142: pPipe6 1
+    100144: pPipe6 2
+    100146: pPipe6 3
+    100148: pPipe6 4
+    100150: pPipe6 5
+    100152: pPipe7
+    100154: pPipe7 1
+    100156: pPipe7 2
+    100158: pPipe7 3
+    100160: pPipe7 4
+    100162: pPipe7 5
+    100164: pPipe8
+    100166: pPipe8 1
+    100168: pPipe9
+    100170: pPipe9 1
+    100172: pPlane9
+    100174: pPlane9 1
+    100176: //RootNode
+    100178: zhuozi
+    100180: gs_05
+    100182: gs_06
+    100184: gs_07
+    100186: gs_08
+    100188: zhuozi_01
+    400000: Chemistry_lab_kejiqiang
+    400002: dengdai
+    400004: dengdai_1
+    400006: dengdai_2
+    400008: gs
+    400010: gs_01
+    400012: gs_02
+    400014: gs_03
+    400016: gs_04
+    400018: kx_yqdct_bolichaung
+    400020: kx_yqdct_chuangkuang
+    400022: kx_yqdct_diban
+    400024: kx_yqdct_men
+    400026: kx_yqdct_qiang
+    400028: kx_yqdct_tianhuaban
+    400030: liujiaodeng
+    400032: liujiaodeng_1
+    400034: liujiaodeng_2
+    400036: liujiaodeng_3
+    400038: liujiaodeng_4
+    400040: liujiaodeng_5
+    400042: liujiaodeng_6
+    400044: liujiaodeng_7
+    400046: liujiaodeng_8
+    400048: namiheigban
+    400050: namiheigban_01
+    400052: namiheigban_02
+    400054: polySurface1
+    400056: polySurface2
+    400058: pPipe1
+    400060: pPipe1 1
+    400062: pPipe1 2
+    400064: pPipe1 3
+    400066: pPipe1 4
+    400068: pPipe1 5
+    400070: pPipe10
+    400072: pPipe10 1
+    400074: pPipe11
+    400076: pPipe11 1
+    400078: pPipe12
+    400080: pPipe12 1
+    400082: pPipe13
+    400084: pPipe13 1
+    400086: pPipe14
+    400088: pPipe15
+    400090: pPipe16
+    400092: pPipe2
+    400094: pPipe2 1
+    400096: pPipe2 2
+    400098: pPipe2 3
+    400100: pPipe2 4
+    400102: pPipe2 5
+    400104: pPipe3
+    400106: pPipe3 1
+    400108: pPipe3 2
+    400110: pPipe3 3
+    400112: pPipe3 4
+    400114: pPipe3 5
+    400116: pPipe4
+    400118: pPipe4 1
+    400120: pPipe4 2
+    400122: pPipe4 3
+    400124: pPipe4 4
+    400126: pPipe4 5
+    400128: pPipe5
+    400130: pPipe5 1
+    400132: pPipe5 2
+    400134: pPipe5 3
+    400136: pPipe5 4
+    400138: pPipe5 5
+    400140: pPipe6
+    400142: pPipe6 1
+    400144: pPipe6 2
+    400146: pPipe6 3
+    400148: pPipe6 4
+    400150: pPipe6 5
+    400152: pPipe7
+    400154: pPipe7 1
+    400156: pPipe7 2
+    400158: pPipe7 3
+    400160: pPipe7 4
+    400162: pPipe7 5
+    400164: pPipe8
+    400166: pPipe8 1
+    400168: pPipe9
+    400170: pPipe9 1
+    400172: pPlane9
+    400174: pPlane9 1
+    400176: //RootNode
+    400178: zhuozi
+    400180: gs_05
+    400182: gs_06
+    400184: gs_07
+    400186: gs_08
+    400188: zhuozi_01
+    2100000: beijingqiang_RGB
+    2100002: jinshuwaikuang
+    2100004: namuheiban_04_tex
+    2100006: namuheiban_01_RGB
+    2100008: namuheiban_03_tex
+    2100010: namuheiban_02_tex
+    2100012: qiang_tex
+    2100014: kx_yqdct_blc_tex
+    2100016: kx_yqdct_ck_tex
+    2100018: kx_yqdct_diabn_tex
+    2100020: kx_yqdct_qiang_tex
+    2100022: zhuozi_tex
+    2100024: kejiqiang_tex
+    2300000: Chemistry_lab_kejiqiang
+    2300002: gs_01
+    2300004: gs_02
+    2300006: gs_03
+    2300008: gs_04
+    2300010: kx_yqdct_bolichaung
+    2300012: kx_yqdct_chuangkuang
+    2300014: kx_yqdct_diban
+    2300016: kx_yqdct_qiang
+    2300018: kx_yqdct_tianhuaban
+    2300020: namiheigban_01
+    2300022: namiheigban_02
+    2300024: polySurface1
+    2300026: polySurface2
+    2300028: pPipe1
+    2300030: pPipe1 1
+    2300032: pPipe1 2
+    2300034: pPipe1 3
+    2300036: pPipe1 4
+    2300038: pPipe1 5
+    2300040: pPipe10
+    2300042: pPipe10 1
+    2300044: pPipe11
+    2300046: pPipe11 1
+    2300048: pPipe12
+    2300050: pPipe12 1
+    2300052: pPipe13
+    2300054: pPipe13 1
+    2300056: pPipe14
+    2300058: pPipe15
+    2300060: pPipe16
+    2300062: pPipe2
+    2300064: pPipe2 1
+    2300066: pPipe2 2
+    2300068: pPipe2 3
+    2300070: pPipe2 4
+    2300072: pPipe2 5
+    2300074: pPipe3
+    2300076: pPipe3 1
+    2300078: pPipe3 2
+    2300080: pPipe3 3
+    2300082: pPipe3 4
+    2300084: pPipe3 5
+    2300086: pPipe4
+    2300088: pPipe4 1
+    2300090: pPipe4 2
+    2300092: pPipe4 3
+    2300094: pPipe4 4
+    2300096: pPipe4 5
+    2300098: pPipe5
+    2300100: pPipe5 1
+    2300102: pPipe5 2
+    2300104: pPipe5 3
+    2300106: pPipe5 4
+    2300108: pPipe5 5
+    2300110: pPipe6
+    2300112: pPipe6 1
+    2300114: pPipe6 2
+    2300116: pPipe6 3
+    2300118: pPipe6 4
+    2300120: pPipe6 5
+    2300122: pPipe7
+    2300124: pPipe7 1
+    2300126: pPipe7 2
+    2300128: pPipe7 3
+    2300130: pPipe7 4
+    2300132: pPipe7 5
+    2300134: pPipe8
+    2300136: pPipe8 1
+    2300138: pPipe9
+    2300140: pPipe9 1
+    2300142: pPlane9
+    2300144: pPlane9 1
+    2300146: zhuozi
+    2300148: gs_05
+    2300150: gs_06
+    2300152: gs_07
+    2300154: gs_08
+    2300156: zhuozi_01
+    3300000: Chemistry_lab_kejiqiang
+    3300002: gs_01
+    3300004: gs_02
+    3300006: gs_03
+    3300008: gs_04
+    3300010: kx_yqdct_bolichaung
+    3300012: kx_yqdct_chuangkuang
+    3300014: kx_yqdct_diban
+    3300016: kx_yqdct_qiang
+    3300018: kx_yqdct_tianhuaban
+    3300020: namiheigban_01
+    3300022: namiheigban_02
+    3300024: polySurface1
+    3300026: polySurface2
+    3300028: pPipe1
+    3300030: pPipe1 1
+    3300032: pPipe1 2
+    3300034: pPipe1 3
+    3300036: pPipe1 4
+    3300038: pPipe1 5
+    3300040: pPipe10
+    3300042: pPipe10 1
+    3300044: pPipe11
+    3300046: pPipe11 1
+    3300048: pPipe12
+    3300050: pPipe12 1
+    3300052: pPipe13
+    3300054: pPipe13 1
+    3300056: pPipe14
+    3300058: pPipe15
+    3300060: pPipe16
+    3300062: pPipe2
+    3300064: pPipe2 1
+    3300066: pPipe2 2
+    3300068: pPipe2 3
+    3300070: pPipe2 4
+    3300072: pPipe2 5
+    3300074: pPipe3
+    3300076: pPipe3 1
+    3300078: pPipe3 2
+    3300080: pPipe3 3
+    3300082: pPipe3 4
+    3300084: pPipe3 5
+    3300086: pPipe4
+    3300088: pPipe4 1
+    3300090: pPipe4 2
+    3300092: pPipe4 3
+    3300094: pPipe4 4
+    3300096: pPipe4 5
+    3300098: pPipe5
+    3300100: pPipe5 1
+    3300102: pPipe5 2
+    3300104: pPipe5 3
+    3300106: pPipe5 4
+    3300108: pPipe5 5
+    3300110: pPipe6
+    3300112: pPipe6 1
+    3300114: pPipe6 2
+    3300116: pPipe6 3
+    3300118: pPipe6 4
+    3300120: pPipe6 5
+    3300122: pPipe7
+    3300124: pPipe7 1
+    3300126: pPipe7 2
+    3300128: pPipe7 3
+    3300130: pPipe7 4
+    3300132: pPipe7 5
+    3300134: pPipe8
+    3300136: pPipe8 1
+    3300138: pPipe9
+    3300140: pPipe9 1
+    3300142: pPlane9
+    3300144: pPlane9 1
+    3300146: zhuozi
+    3300148: gs_05
+    3300150: gs_06
+    3300152: gs_07
+    3300154: gs_08
+    3300156: zhuozi_01
+    4300000: pPipe1
+    4300002: pPipe2
+    4300004: pPipe3
+    4300006: pPipe4
+    4300008: pPipe5
+    4300010: pPipe6
+    4300012: pPipe7
+    4300014: pPipe1
+    4300016: pPipe2
+    4300018: pPipe3
+    4300020: pPipe4
+    4300022: pPipe5
+    4300024: pPipe6
+    4300026: pPipe7
+    4300028: pPipe1
+    4300030: pPipe2
+    4300032: pPipe3
+    4300034: pPipe4
+    4300036: pPipe5
+    4300038: pPipe6
+    4300040: pPipe7
+    4300042: pPipe1
+    4300044: pPipe2
+    4300046: pPipe3
+    4300048: pPipe4
+    4300050: pPipe5
+    4300052: pPipe6
+    4300054: pPipe7
+    4300056: pPipe1
+    4300058: pPipe2
+    4300060: pPipe3
+    4300062: pPipe4
+    4300064: pPipe5
+    4300066: pPipe6
+    4300068: pPipe7
+    4300070: pPipe1
+    4300072: pPipe2
+    4300074: pPipe3
+    4300076: pPipe4
+    4300078: pPipe5
+    4300080: pPipe6
+    4300082: pPipe7
+    4300084: pPipe8
+    4300086: pPipe9
+    4300088: pPipe10
+    4300090: pPipe11
+    4300092: pPipe12
+    4300094: pPipe13
+    4300096: pPipe14
+    4300098: pPipe15
+    4300100: pPipe16
+    4300102: pPipe8
+    4300104: pPipe9
+    4300106: pPipe10
+    4300108: pPipe11
+    4300110: pPipe12
+    4300112: pPipe13
+    4300114: namiheigban_01
+    4300116: namiheigban_02
+    4300118: kx_yqdct_bolichaung
+    4300120: kx_yqdct_chuangkuang
+    4300122: kx_yqdct_diban
+    4300124: kx_yqdct_qiang
+    4300126: kx_yqdct_tianhuaban
+    4300128: polySurface1
+    4300130: polySurface2
+    4300132: gs_01
+    4300134: gs_02
+    4300136: gs_03
+    4300138: gs_04
+    4300140: zhuozi
+    4300142: Chemistry_lab_kejiqiang
+    4300144: pPlane9
+    4300146: pPlane9
+    4300148: gs_05
+    4300150: gs_06
+    4300152: gs_07
+    4300154: gs_08
+    4300156: zhuozi_01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beijingqiang_RGB
+    second: {fileID: 2100000, guid: 523042ccaabfede41bc7b2e55f419025, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jinshuwaikuang
+    second: {fileID: 2100000, guid: 175a5b5f255949c4caab5745aedf28b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kejiqiang_tex
+    second: {fileID: 2100000, guid: 03d5866fb07b06f4c8dc3257cba977c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_blc_tex
+    second: {fileID: 2100000, guid: 4199df874e102e14882314ddcedff56c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_ck_tex
+    second: {fileID: 2100000, guid: 055975921f9d45744aa37e399db63c98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_diabn_tex
+    second: {fileID: 2100000, guid: c9b263d9f1629a849aaacf093b316862, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_qiang_tex
+    second: {fileID: 2100000, guid: 9c5de51385cbde64fa57b8bfff25d786, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: namuheiban_01_RGB
+    second: {fileID: 2100000, guid: b895c98fe232f4c48a1b89768fac8694, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: namuheiban_02_tex
+    second: {fileID: 2100000, guid: dd571467e4abdd047b067a4b802b0a75, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: namuheiban_03_tex
+    second: {fileID: 2100000, guid: 5f4a20735e5d8374980913a18007dae2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: namuheiban_04_tex
+    second: {fileID: 2100000, guid: 3dc0316599d8e1c41aa2dc5f3a76e18b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: qiang_tex
+    second: {fileID: 2100000, guid: 580067dcebdb92946a8a6580c2e6993c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhuozi_tex
+    second: {fileID: 2100000, guid: 572698b801f920a4ea691a0c50b8c3d7, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

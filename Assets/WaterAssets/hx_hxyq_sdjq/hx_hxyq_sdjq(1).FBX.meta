@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: 8482f871213657a4b92c8bd253769bdf
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: dl_zrdl_sw_ns
+    100002: group16
+    100004: hx_hxyq_blb
+    100006: hx_hxyq_sb
+    100008: hx_hxyq_sdjq
+    100010: hx_hxyq_sdjq 1
+    100012: //RootNode
+    100014: hx_hxyq_sdjq_an
+    100016: hx_hxyq_xsdy
+    100018: Object001
+    100020: polySurface1
+    100022: polySurface13
+    100024: polySurface14
+    100026: polySurface15
+    100028: polySurface16
+    100030: polySurface17
+    100032: polySurface18
+    100034: polySurface19
+    100036: polySurface2
+    100038: polySurface20
+    100040: polySurface23
+    100042: polySurface26
+    100044: polySurface27
+    100046: polySurface28
+    100048: polySurface29
+    100050: polySurface3
+    100052: polySurface30
+    100054: polySurface31
+    100056: polySurface32
+    100058: polySurface4
+    100060: polySurface5
+    100062: polySurface7
+    100064: shaobei
+    100066: shui
+    100068: wl_dx_xsdy_sq
+    100070: wl_dx_xsdy_sq1
+    400000: dl_zrdl_sw_ns
+    400002: group16
+    400004: hx_hxyq_blb
+    400006: hx_hxyq_sb
+    400008: hx_hxyq_sdjq
+    400010: hx_hxyq_sdjq 1
+    400012: //RootNode
+    400014: hx_hxyq_sdjq_an
+    400016: hx_hxyq_xsdy
+    400018: Object001
+    400020: polySurface1
+    400022: polySurface13
+    400024: polySurface14
+    400026: polySurface15
+    400028: polySurface16
+    400030: polySurface17
+    400032: polySurface18
+    400034: polySurface19
+    400036: polySurface2
+    400038: polySurface20
+    400040: polySurface23
+    400042: polySurface26
+    400044: polySurface27
+    400046: polySurface28
+    400048: polySurface29
+    400050: polySurface3
+    400052: polySurface30
+    400054: polySurface31
+    400056: polySurface32
+    400058: polySurface4
+    400060: polySurface5
+    400062: polySurface7
+    400064: shaobei
+    400066: shui
+    400068: wl_dx_xsdy_sq
+    400070: wl_dx_xsdy_sq1
+    2100000: s
+    2100002: hx_fyl_sdjysq30ml_02
+    2100004: wl_dx_xsdy
+    2100006: hx_fyl_sdjysq30ml_al01
+    2100008: 02 - Default
+    2100010: 03 - Default
+    2100012: hx_hxyq_blb
+    2100014: hx_fyl_500mlsb
+    2100016: 02 - Default3
+    2300000: dl_zrdl_sw_ns
+    2300002: hx_hxyq_blb
+    2300004: hx_hxyq_sb
+    2300006: hx_hxyq_sdjq_an
+    2300008: hx_hxyq_xsdy
+    2300010: Object001
+    2300012: polySurface1
+    2300014: polySurface13
+    2300016: polySurface14
+    2300018: polySurface15
+    2300020: polySurface16
+    2300022: polySurface17
+    2300024: polySurface18
+    2300026: polySurface19
+    2300028: polySurface2
+    2300030: polySurface20
+    2300032: polySurface23
+    2300034: polySurface26
+    2300036: polySurface27
+    2300038: polySurface28
+    2300040: polySurface29
+    2300042: polySurface3
+    2300044: polySurface30
+    2300046: polySurface31
+    2300048: polySurface32
+    2300050: polySurface4
+    2300052: polySurface5
+    2300054: polySurface7
+    2300056: shui
+    2300058: wl_dx_xsdy_sq
+    2300060: wl_dx_xsdy_sq1
+    3300000: dl_zrdl_sw_ns
+    3300002: hx_hxyq_blb
+    3300004: hx_hxyq_sb
+    3300006: hx_hxyq_sdjq_an
+    3300008: hx_hxyq_xsdy
+    3300010: Object001
+    3300012: polySurface1
+    3300014: polySurface13
+    3300016: polySurface14
+    3300018: polySurface15
+    3300020: polySurface16
+    3300022: polySurface17
+    3300024: polySurface18
+    3300026: polySurface19
+    3300028: polySurface2
+    3300030: polySurface20
+    3300032: polySurface23
+    3300034: polySurface26
+    3300036: polySurface27
+    3300038: polySurface28
+    3300040: polySurface29
+    3300042: polySurface3
+    3300044: polySurface30
+    3300046: polySurface31
+    3300048: polySurface32
+    3300050: polySurface4
+    3300052: polySurface5
+    3300054: polySurface7
+    3300056: shui
+    3300058: wl_dx_xsdy_sq
+    3300060: wl_dx_xsdy_sq1
+    4300000: shui
+    4300002: wl_dx_xsdy_sq
+    4300004: wl_dx_xsdy_sq1
+    4300006: polySurface1
+    4300008: polySurface2
+    4300010: polySurface3
+    4300012: polySurface4
+    4300014: polySurface5
+    4300016: polySurface7
+    4300018: polySurface13
+    4300020: polySurface14
+    4300022: polySurface15
+    4300024: polySurface16
+    4300026: polySurface17
+    4300028: polySurface18
+    4300030: polySurface19
+    4300032: polySurface20
+    4300034: polySurface23
+    4300036: polySurface26
+    4300038: polySurface27
+    4300040: polySurface28
+    4300042: polySurface29
+    4300044: polySurface30
+    4300046: polySurface31
+    4300048: polySurface32
+    4300050: hx_hxyq_sdjq_an
+    4300052: hx_hxyq_xsdy
+    4300054: hx_hxyq_blb
+    4300056: hx_hxyq_sb
+    4300058: dl_zrdl_sw_ns
+    4300060: Object001
+    7400000: hx_hxyq_sdjq_5
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: 702b953bcd691ce4d9808f8571fe873f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default3
+    second: {fileID: 2100000, guid: 50f572d0339e6cd4ead540089cb28173, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: e130dee0495d0c84182a2e8853b4e981, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hx_fyl_500mlsb
+    second: {fileID: 2100000, guid: 31ae70367f72ab34da81aebaea5e3ff1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hx_fyl_sdjysq30ml_02
+    second: {fileID: 2100000, guid: 021b525b0ba41914c9810f21fe1b9398, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hx_fyl_sdjysq30ml_al01
+    second: {fileID: 2100000, guid: 73e2abc740f3dc643b53baece10280ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hx_hxyq_blb
+    second: {fileID: 2100000, guid: 23181b5a3e0ed59418251d760abaa0ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: s
+    second: {fileID: 2100000, guid: 83fb0a7727475c04a821f92792e943e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_dx_xsdy
+    second: {fileID: 2100000, guid: 28ab455ac2553fe4a903d3f88ffdf749, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,42 @@
+下载
+
+
+unity液体特效Liquid Volume 4.0
+
+所支持的Unity版本：5.4.0 及以上版本
+
+Liquid Volume is a powerful and highly customizable shader that simulates realistic and animated liquid containers. Can be used in 3D scenes and 2D UI (demos included).
+
+Liquid Volume is super easy and fun to use: just add the main script to any gameobject with a mesh to convert it into a liquid container! 
+
+Liquid Volume works with cylinders, cubes, spheres and since v3 also with irregular shapes (like potions, bottles and similar flasks).
+
+Includes the following ready to use prefabs:
+Sphere flask
+Cylinder flask
+Cube flask
+Beaker
+Bottle
+Glass
+Circular flask
+2 Magic Orbs
+6 Potions
+... even a fillable beer glass!
+Experiment with your models and save your own prefabs!
+
+
+
+
+
+
+
+
+
+www.6m5m.com
+---------------------------------------------------------------------------------------------------
+6m5m游戏素材网专注于游戏开发各种源码、素材、模型、音效、资源的学习与分享！
+---------------------------------------------------------------------------------------------------
+免责声明：
+资源来自互联网，仅限用于学习研究，请勿用于任何商业用途，请支持正版，尊重原版权，否则后果自负，请下载24小时内务必删除，本站不承担任何责任！
+
+3

@@ -1,0 +1,13 @@
+1.VerifyUseDateUI预制修改名字
+     原因：证书认阻塞卡顿。
+     打包恢复名字VerifyUseDateUI
+
+
+2.导入模板Mrsystem viewerScale太小，零平面看不见，调节Viewerscale
+
+3.Game视图和一体机交互，game视图放到一体机屏幕上。game视图scale=1
+
+4.笔头大小需要手动localscale.
+
+5.3D模式物体没有合上
+      眼镜按钮切换识别

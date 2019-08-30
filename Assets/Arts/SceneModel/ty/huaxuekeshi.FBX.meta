@@ -1,0 +1,450 @@
+fileFormatVersion: 2
+guid: a41657c97cc097e4a87499fbd5205b5b
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box005
+    100002: Box015
+    100004: Box016
+    100006: Box017
+    100008: Box023
+    100010: Box043
+    100012: Box067
+    100014: Box068
+    100016: Box075
+    100018: Box076
+    100020: Box090
+    100022: Group001
+    100024: //RootNode
+    100026: kejiqiang
+    100028: kx_yqdct_cizhuan
+    100030: kx_yqdct_cizhuan001
+    100032: Line002
+    100034: men
+    100036: namihaiban
+    100038: Object019
+    100040: Object020
+    100042: Object021
+    100044: Object025
+    100046: Plane001
+    100048: qiaoti
+    100050: tianhua
+    100052: yizi1
+    100054: zhouzi001
+    100056: zhuangshi
+    100058: zhuoshangwuping
+    100060: zhuozi3
+    100062: Box091
+    100064: keshi
+    100066: Plane002
+    100068: Plane003
+    100070: Plane004
+    100072: Plane005
+    100074: Plane006
+    100076: Plane007
+    100078: Plane008
+    100080: Plane009
+    100082: Plane010
+    100084: Plane011
+    100086: Plane012
+    100088: Plane013
+    100090: Plane014
+    100092: Plane015
+    100094: Plane016
+    100096: Plane017
+    400000: Box005
+    400002: Box015
+    400004: Box016
+    400006: Box017
+    400008: Box023
+    400010: Box043
+    400012: Box067
+    400014: Box068
+    400016: Box075
+    400018: Box076
+    400020: Box090
+    400022: Group001
+    400024: //RootNode
+    400026: kejiqiang
+    400028: kx_yqdct_cizhuan
+    400030: kx_yqdct_cizhuan001
+    400032: Line002
+    400034: men
+    400036: namihaiban
+    400038: Object019
+    400040: Object020
+    400042: Object021
+    400044: Object025
+    400046: Plane001
+    400048: qiaoti
+    400050: tianhua
+    400052: yizi1
+    400054: zhouzi001
+    400056: zhuangshi
+    400058: zhuoshangwuping
+    400060: zhuozi3
+    400062: Box091
+    400064: keshi
+    400066: Plane002
+    400068: Plane003
+    400070: Plane004
+    400072: Plane005
+    400074: Plane006
+    400076: Plane007
+    400078: Plane008
+    400080: Plane009
+    400082: Plane010
+    400084: Plane011
+    400086: Plane012
+    400088: Plane013
+    400090: Plane014
+    400092: Plane015
+    400094: Plane016
+    400096: Plane017
+    2100000: heiban
+    2100002: beiban
+    2100004: lanqiao
+    2100006: qianrulandi
+    2100008: diban
+    2100010: baidi
+    2100012: boli
+    2100014: tieshuicao
+    2100016: deng
+    2100018: men1
+    2100020: menshangshenlan
+    2100022: tie_men
+    2100024: menshanglan
+    2100026: tiejiazi
+    2100028: zhuozi
+    2100030: zhuozi2
+    2100032: dengzi
+    2100034: yizi
+    2100036: lunzi
+    2100038: zs1
+    2100040: zhuangshi1
+    2300000: Box005
+    2300002: Box015
+    2300004: Box016
+    2300006: Box017
+    2300008: Box023
+    2300010: Box043
+    2300012: Box067
+    2300014: Box068
+    2300016: Box075
+    2300018: Box076
+    2300020: Box090
+    2300022: kejiqiang
+    2300024: kx_yqdct_cizhuan
+    2300026: kx_yqdct_cizhuan001
+    2300028: Line002
+    2300030: namihaiban
+    2300032: Object019
+    2300034: Object020
+    2300036: Object021
+    2300038: Object025
+    2300040: Plane001
+    2300042: yizi1
+    2300044: zhouzi001
+    2300046: zhuozi3
+    2300048: Box091
+    2300050: Plane002
+    2300052: Plane003
+    2300054: Plane004
+    2300056: Plane005
+    2300058: Plane006
+    2300060: Plane007
+    2300062: Plane008
+    2300064: Plane009
+    2300066: Plane010
+    2300068: Plane011
+    2300070: Plane012
+    2300072: Plane013
+    2300074: Plane014
+    2300076: Plane015
+    2300078: Plane016
+    2300080: Plane017
+    3300000: Box005
+    3300002: Box015
+    3300004: Box016
+    3300006: Box017
+    3300008: Box023
+    3300010: Box043
+    3300012: Box067
+    3300014: Box068
+    3300016: Box075
+    3300018: Box076
+    3300020: Box090
+    3300022: kejiqiang
+    3300024: kx_yqdct_cizhuan
+    3300026: kx_yqdct_cizhuan001
+    3300028: Line002
+    3300030: namihaiban
+    3300032: Object019
+    3300034: Object020
+    3300036: Object021
+    3300038: Object025
+    3300040: Plane001
+    3300042: yizi1
+    3300044: zhouzi001
+    3300046: zhuozi3
+    3300048: Box091
+    3300050: Plane002
+    3300052: Plane003
+    3300054: Plane004
+    3300056: Plane005
+    3300058: Plane006
+    3300060: Plane007
+    3300062: Plane008
+    3300064: Plane009
+    3300066: Plane010
+    3300068: Plane011
+    3300070: Plane012
+    3300072: Plane013
+    3300074: Plane014
+    3300076: Plane015
+    3300078: Plane016
+    3300080: Plane017
+    4300000: namihaiban
+    4300002: Box017
+    4300004: kx_yqdct_cizhuan001
+    4300006: kx_yqdct_cizhuan
+    4300008: Box015
+    4300010: Box016
+    4300012: Box075
+    4300014: Box076
+    4300016: Box090
+    4300018: kejiqiang
+    4300020: Box023
+    4300022: Box043
+    4300024: Box067
+    4300026: Box068
+    4300028: Object019
+    4300030: Box005
+    4300032: Line002
+    4300034: Object020
+    4300036: zhouzi001
+    4300038: yizi1
+    4300040: zhuozi3
+    4300042: Object025
+    4300044: Object021
+    4300046: Plane001
+    4300048: Box091
+    4300050: Plane002
+    4300052: Plane003
+    4300054: Plane004
+    4300056: Plane005
+    4300058: Plane006
+    4300060: Plane007
+    4300062: Plane008
+    4300064: Plane009
+    4300066: Plane010
+    4300068: Plane011
+    4300070: Plane012
+    4300072: Plane013
+    4300074: Plane014
+    4300076: Plane015
+    4300078: Plane016
+    4300080: Plane017
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: f0d50a4932cacaa43aed26480fe7767f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #115'
+    second: {fileID: 2100000, guid: cd8ef7a012631cb4abd429321c0fd915, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: baidi
+    second: {fileID: 2100000, guid: b4bf694cb34fcda44a840192cb5c77df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: beiban
+    second: {fileID: 2100000, guid: 5aaaf594899330d499277be8cfa05af6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boli
+    second: {fileID: 2100000, guid: da9756447ddc9e643a1c735df84be229, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: deng
+    second: {fileID: 2100000, guid: 58f7f3b6d81c684468e77f9204a88cb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dengzi
+    second: {fileID: 2100000, guid: a643bff18f957e446803a41f1b68708c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: diban
+    second: {fileID: 2100000, guid: 12b4f6aad2e2e05498bd87a4e3171605, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: heiban
+    second: {fileID: 2100000, guid: b4d26e1e5ede45641b790b5261b08df8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lanqiao
+    second: {fileID: 2100000, guid: 2d1c251c62281774399dbf36791d9940, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lunzi
+    second: {fileID: 2100000, guid: e3ab1f49c840e274daf667682ab0a2f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: men1
+    second: {fileID: 2100000, guid: 78058dbf47227df47a5bd1c6253b027c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: menshanglan
+    second: {fileID: 2100000, guid: aff8334c97a68f5458242d5528ac8d52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: menshangshenlan
+    second: {fileID: 2100000, guid: 976b34a614c1236488a019705720b6f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: b4bf694cb34fcda44a840192cb5c77df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: qianrulandi
+    second: {fileID: 2100000, guid: 845998dcda161b54a9a02cc925416bc7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tie_men
+    second: {fileID: 2100000, guid: d64aa254370d0b441bcfb799557a3fa5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tiejiazi
+    second: {fileID: 2100000, guid: 6462eb70982bd9d4699168cd4b0cf5d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tieshuicao
+    second: {fileID: 2100000, guid: 166f6840f8480804290d7867a6e754d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yizi
+    second: {fileID: 2100000, guid: a8b32e6ab4827284f9893524b57f9588, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhuangshi1
+    second: {fileID: 2100000, guid: 1f89029a1426eaa4cba7b3c9bc0cac48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhuozi
+    second: {fileID: 2100000, guid: e0217756402f86342b4e831919e3ba5c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zhuozi2
+    second: {fileID: 2100000, guid: c3734a2ee036f384ea6cb7f766434d16, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: zs1
+    second: {fileID: 2100000, guid: f4a7c48eb0654624faf2f944ed93219f, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 3
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

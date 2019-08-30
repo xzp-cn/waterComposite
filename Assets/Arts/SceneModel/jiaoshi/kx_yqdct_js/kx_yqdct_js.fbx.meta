@@ -1,0 +1,255 @@
+fileFormatVersion: 2
+guid: d5429e8dfc43c9144bfae6391c02ebd7
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: kx_yqdct_bolichaung
+    100002: kx_yqdct_chuangkuang
+    100004: kx_yqdct_cizhuan
+    100006: kx_yqdct_guizi
+    100008: kx_yqdct_heiban
+    100010: kx_yqdct_heiban_1
+    100012: kx_yqdct_heiban_2
+    100014: kx_yqdct_heiban_3
+    100016: kx_yqdct_heiban_kuang
+    100018: kx_yqdct_jiaotai
+    100020: //RootNode
+    100022: kx_yqdct_kechengbiao
+    100024: kx_yqdct_men
+    100026: kx_yqdct_penzai
+    100028: kx_yqdct_qiang
+    100030: kx_yqdct_shiyanshiguanli
+    100032: kx_yqdct_tianhuaban
+    100034: kx_yqdct_qiang1
+    400000: kx_yqdct_bolichaung
+    400002: kx_yqdct_chuangkuang
+    400004: kx_yqdct_cizhuan
+    400006: kx_yqdct_guizi
+    400008: kx_yqdct_heiban
+    400010: kx_yqdct_heiban_1
+    400012: kx_yqdct_heiban_2
+    400014: kx_yqdct_heiban_3
+    400016: kx_yqdct_heiban_kuang
+    400018: kx_yqdct_jiaotai
+    400020: //RootNode
+    400022: kx_yqdct_kechengbiao
+    400024: kx_yqdct_men
+    400026: kx_yqdct_penzai
+    400028: kx_yqdct_qiang
+    400030: kx_yqdct_shiyanshiguanli
+    400032: kx_yqdct_tianhuaban
+    400034: kx_yqdct_qiang1
+    2100000: kx_yqdct_pz_tex
+    2100002: kx_yqdct_pz_ye_tex
+    2100004: kx_yqdct_qiang_tex
+    2100006: kx_yqdct_jt_2
+    2100008: kx_yqdct_jt_1
+    2100010: kx_yqdct_blc_tex
+    2100012: kx_yqdct_ck_tex
+    2100014: kx_yqdct_kcb_tex
+    2100016: kx_yqdct_sysgl_tex
+    2100018: kx_yqdct_cizhuan_tex
+    2100020: kx_yqdct_hbk_tex
+    2100022: kx_yqdct_heiban_1_tex
+    2100024: kx_yqdct_heiban_2_tex
+    2100026: kx_yqdct_heiban_3_tex
+    2300000: kx_yqdct_bolichaung
+    2300002: kx_yqdct_chuangkuang
+    2300004: kx_yqdct_cizhuan
+    2300006: kx_yqdct_guizi
+    2300008: kx_yqdct_heiban_1
+    2300010: kx_yqdct_heiban_2
+    2300012: kx_yqdct_heiban_3
+    2300014: kx_yqdct_heiban_kuang
+    2300016: kx_yqdct_jiaotai
+    2300018: kx_yqdct_kechengbiao
+    2300020: kx_yqdct_men
+    2300022: kx_yqdct_penzai
+    2300024: kx_yqdct_qiang
+    2300026: kx_yqdct_shiyanshiguanli
+    2300028: kx_yqdct_tianhuaban
+    2300030: kx_yqdct_qiang1
+    3300000: kx_yqdct_bolichaung
+    3300002: kx_yqdct_chuangkuang
+    3300004: kx_yqdct_cizhuan
+    3300006: kx_yqdct_guizi
+    3300008: kx_yqdct_heiban_1
+    3300010: kx_yqdct_heiban_2
+    3300012: kx_yqdct_heiban_3
+    3300014: kx_yqdct_heiban_kuang
+    3300016: kx_yqdct_jiaotai
+    3300018: kx_yqdct_kechengbiao
+    3300020: kx_yqdct_men
+    3300022: kx_yqdct_penzai
+    3300024: kx_yqdct_qiang
+    3300026: kx_yqdct_shiyanshiguanli
+    3300028: kx_yqdct_tianhuaban
+    3300030: kx_yqdct_qiang1
+    4300000: kx_yqdct_penzai
+    4300002: kx_yqdct_guizi
+    4300004: kx_yqdct_jiaotai
+    4300006: kx_yqdct_bolichaung
+    4300008: kx_yqdct_chuangkuang
+    4300010: kx_yqdct_qiang
+    4300012: kx_yqdct_kechengbiao
+    4300014: kx_yqdct_shiyanshiguanli
+    4300016: kx_yqdct_cizhuan
+    4300018: kx_yqdct_tianhuaban
+    4300020: kx_yqdct_men
+    4300022: kx_yqdct_heiban_kuang
+    4300024: kx_yqdct_heiban_1
+    4300026: kx_yqdct_heiban_2
+    4300028: kx_yqdct_heiban_3
+    4300030: kx_yqdct_qiang1
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_blc_tex
+    second: {fileID: 2100000, guid: 5df41f54a9ba16749a4bbcff040a90bb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_cizhuan_tex
+    second: {fileID: 2100000, guid: bfb2e362b69ef4146bc5992abe964589, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_ck_tex
+    second: {fileID: 2100000, guid: 6c1dc2290b93c164baea5b16d7fb5da4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_hbk_tex
+    second: {fileID: 2100000, guid: f0d85af9677521340bd56fff4ac66ae3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_heiban_1_tex
+    second: {fileID: 2100000, guid: b0bf9058f7610e94ea804a53ab686473, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_heiban_2_tex
+    second: {fileID: 2100000, guid: bf0709f7752870c49bdb3fd88d6a30ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_heiban_3_tex
+    second: {fileID: 2100000, guid: 645aeeb0c38c3da4bb7deea7a37f5d50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_jt_1
+    second: {fileID: 2100000, guid: 2026678a6b446ed43bc1f73985f34604, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_jt_2
+    second: {fileID: 2100000, guid: e333cd9f9416ad944b78ffca519bfba3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_kcb_tex
+    second: {fileID: 2100000, guid: 11eb8cf42269b8449aabfcc1e170ad3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_pz_tex
+    second: {fileID: 2100000, guid: 1ca807efc676d3441b5dffb68d640b96, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_pz_ye_tex
+    second: {fileID: 2100000, guid: a37106c6662a1e247bf67c5679b75b47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_qiang_tex
+    second: {fileID: 2100000, guid: a385284205a64a740bf705d27c968277, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kx_yqdct_sysgl_tex
+    second: {fileID: 2100000, guid: 8b09bf8b8dd89f3438270bf16f2f6401, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 8
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

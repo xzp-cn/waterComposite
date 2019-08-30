@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: 184f4065a12f85a4b8b0ba02938b323e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: wl_wljj_gjz
+    100002: wl_wljj_gjz_dz
+    100004: wl_wljj_gjz_g_1
+    100006: wl_wljj_gjz_g_2
+    100008: wl_wljj_gjz_g_3
+    100010: wl_wljj_gjz_hk_1
+    100012: wl_wljj_gjz_hk_2
+    100014: wl_wljj_gjz_hk_3
+    100016: wl_wljj_gp
+    100018: wl_wljj_gp_k
+    100020: wl_wljj_gp_p
+    100022: //RootNode
+    100024: wl_wljj_lz
+    100026: wl_wljj_ttj
+    100028: wl_wljj_gjz_01
+    100030: wl_wljj_gjz_02
+    100032: wl_wljj_gjz_03
+    100034: wl_wljj_gjz_kd
+    400000: wl_wljj_gjz
+    400002: wl_wljj_gjz_dz
+    400004: wl_wljj_gjz_g_1
+    400006: wl_wljj_gjz_g_2
+    400008: wl_wljj_gjz_g_3
+    400010: wl_wljj_gjz_hk_1
+    400012: wl_wljj_gjz_hk_2
+    400014: wl_wljj_gjz_hk_3
+    400016: wl_wljj_gp
+    400018: wl_wljj_gp_k
+    400020: wl_wljj_gp_p
+    400022: //RootNode
+    400024: wl_wljj_lz
+    400026: wl_wljj_ttj
+    400028: wl_wljj_gjz_01
+    400030: wl_wljj_gjz_02
+    400032: wl_wljj_gjz_03
+    400034: wl_wljj_gjz_kd
+    2100000: wl_wljj_lz_tex
+    2100002: wl_wljj_ltj_k_RGB
+    2100004: wl_wljj_tj_j_RGB
+    2100006: wl_wljj_gjz_tex
+    2100008: wl_wljj_gp_tex1
+    2300000: wl_wljj_gjz_dz
+    2300002: wl_wljj_gjz_g_1
+    2300004: wl_wljj_gjz_g_2
+    2300006: wl_wljj_gjz_g_3
+    2300008: wl_wljj_gjz_hk_1
+    2300010: wl_wljj_gjz_hk_2
+    2300012: wl_wljj_gjz_hk_3
+    2300014: wl_wljj_gp_k
+    2300016: wl_wljj_gp_p
+    2300018: wl_wljj_lz
+    2300020: wl_wljj_ttj
+    2300022: wl_wljj_gjz_kd
+    3300000: wl_wljj_gjz_dz
+    3300002: wl_wljj_gjz_g_1
+    3300004: wl_wljj_gjz_g_2
+    3300006: wl_wljj_gjz_g_3
+    3300008: wl_wljj_gjz_hk_1
+    3300010: wl_wljj_gjz_hk_2
+    3300012: wl_wljj_gjz_hk_3
+    3300014: wl_wljj_gp_k
+    3300016: wl_wljj_gp_p
+    3300018: wl_wljj_lz
+    3300020: wl_wljj_ttj
+    3300022: wl_wljj_gjz_kd
+    4300000: wl_wljj_lz
+    4300002: wl_wljj_ttj
+    4300004: wl_wljj_gjz_dz
+    4300006: wl_wljj_gjz_hk_1
+    4300008: wl_wljj_gjz_hk_2
+    4300010: wl_wljj_gjz_hk_3
+    4300012: wl_wljj_gjz_g_1
+    4300014: wl_wljj_gjz_g_2
+    4300016: wl_wljj_gjz_g_3
+    4300018: wl_wljj_gp_p
+    4300020: wl_wljj_gp_k
+    4300022: wl_wljj_gjz_kd
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_wljj_gjz_kd_RGB
+    second: {fileID: 2100000, guid: 7e625534d9d48094ea99f667640b2293, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_wljj_gjz_tex
+    second: {fileID: 2100000, guid: f50e8dc938edd924b8070b20ed32c99f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_wljj_gp_tex1
+    second: {fileID: 2100000, guid: 8ef832f1193f7084faa4e590b4e7849f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_wljj_lz_tex
+    second: {fileID: 2100000, guid: ba424a4d33e61d748824fd9145e4e241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_wljj_tj_j_RGB
+    second: {fileID: 2100000, guid: 1453d855023d10b46bc150350ad6b347, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wl_wljj_tj_k_RGB
+    second: {fileID: 2100000, guid: 347977962aca70e42a4a8c92eae8fe70, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
