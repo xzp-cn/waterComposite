@@ -2033,7 +2033,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1248913896554820}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.0048, y: 0.04899974, z: -0.058}
+  m_LocalPosition: {x: -0.14, y: 0.04899974, z: 0.051900104}
   m_LocalScale: {x: 1.6666667, y: 4.9999995, z: 1.0000001}
   m_Children:
   - {fileID: 4102660980409590}
@@ -2450,7 +2450,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800145811244242}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.5765, y: -0.21320003, z: -0.0691}
+  m_LocalPosition: {x: 0.365, y: -0.21320003, z: -0.0691}
   m_LocalScale: {x: 0.6, y: 0.20000002, z: 1}
   m_Children:
   - {fileID: 4968796820459106}
@@ -2800,7 +2800,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317019515932536}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0.7071069, w: 0}
-  m_LocalPosition: {x: -0.103, y: 0.107, z: 0.0164}
+  m_LocalPosition: {x: -0.063, y: 0.107, z: 0.0164}
   m_LocalScale: {x: 1.6666695, y: 1, z: 5}
   m_Children: []
   m_Father: {fileID: 4623212503333280}
@@ -3048,7 +3048,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1495180614566128}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.1423, y: 0.049, z: -0.0368}
+  m_LocalPosition: {x: 0.05, y: 0.06, z: 0.0198}
   m_LocalScale: {x: 1.6666667, y: 5, z: 1}
   m_Children:
   - {fileID: 4522108504987130}
@@ -3580,7 +3580,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1800145811244242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -19135,7 +19135,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -23666,7 +23666,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -32728,7 +32728,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

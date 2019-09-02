@@ -52,6 +52,11 @@ namespace xuexue.common.drag2dtool
         private int mouseBtn = -1;
 
         /// <summary>
+        /// 拖拽过程中的回调事件
+        /// </summary>
+        public System.Action<DragRecord> mouseMoveDrag;
+
+        /// <summary>
         /// 设置由哪个按键抬起来终止拖拽，产生Stop Event,并且设置回调。
         /// key值为0,1,2
         /// </summary>
@@ -71,6 +76,23 @@ namespace xuexue.common.drag2dtool
         }
 
         /// <summary>
+        /// 拖拽回调事件
+        /// </summary>
+        /// <param name="proc"></param>
+        /// <param name="MouseBtn"></param>
+        /// <returns></returns>
+        public DragRecord SetOnMouseMove(Action<DragRecord> proc, int MouseBtn)
+        {
+            if (mouseBtn != -1)//只能被设置一次
+            {
+                return this;
+            }
+            mouseBtn = MouseBtn;//设置参数到成员字段
+            mouseMoveDrag = proc;
+            return this;
+        }
+
+        /// <summary>
         /// 使用当前的触摸状态去更新这个拖拽物体的位置
         /// </summary>
         internal void Update()
@@ -85,6 +107,9 @@ namespace xuexue.common.drag2dtool
             Vector3 curPosition = caluCamera.ScreenToWorldPoint(curScreenSpace) + offset;
             //curPosition就是物体应该的移动向量赋给transform的position属性
             dragObj.position = curPosition;
+
+            mouseMoveDrag?.Invoke(this);
+
             if (mouseBtn == -1)
             {
                 mouseBtn = 0;

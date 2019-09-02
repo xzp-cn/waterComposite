@@ -2,7 +2,6 @@
 using operatemodeltool;
 using UnityEngine;
 using xuexue.common.drag2dtool;
-
 namespace FSpace
 {
     /// <summary>
@@ -10,7 +9,6 @@ namespace FSpace
     /// </summary>
     public class SimpleDrag : MonoBehaviour
     {
-
         /// <summary>
         /// 创建的笔的射线物体
         /// </summary>
@@ -149,10 +147,21 @@ namespace FSpace
             _curDragObj = null;
         }
 
-        public System.Func<GameObject, bool> ClickAction;
-        public System.Action<string> DragActionCallback;
+        /// <summary>
+        /// 3d点击回调
+        /// </summary>
+        public System.Func<GameObject, bool> ClickAction;//3d物体点击一帧回调.      
+        /// <summary>
+        /// 物体拖拽每帧回调.
+        /// </summary>
+        public System.Action<xuexue.common.drag2dtool.DragRecord, Transform> DragCallback;
+        public bool canDrag = true; //控制物体是否可以拖拽
         void Drag2DObj()
         {
+            if (!canDrag)
+            {
+                return;
+            }
             RaycastHit raycastHit;
             //int defaultLayer = LayerMask.NameToLayer("Default");//这个层是模型
             Ray ray = Monitor23DMode.instance.camera2D.ScreenPointToRay(Input.mousePosition);
@@ -171,33 +180,47 @@ namespace FSpace
                 dragObj = raycastHit.collider.gameObject;
                 _curDragObj = dragObj;
 
-                bool isClick = false;
+                //3d物体点击事件
                 if (ClickAction != null)
                 {
-                    isClick = ClickAction(dragObj);
-                    if (isClick)
+                    bool isClick3DObj = ClickAction(dragObj);
+                    if (isClick3DObj)
                     {
                         return;
                     }
                 }
 
-                if (DragActionCallback != null)
-                {
-                    DragActionCallback(_curDragObj.name);
-                }
                 if (GlobalConfig.Instance.operationModel == OperationModel.Move)
                 {
                     Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
-
+                    xuexue.common.drag2dtool.DragRecord dr = Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
+                    dr.SetOnMouseMove(DragCall, 0);
                 }
                 else if (GlobalConfig.Instance.operationModel == OperationModel.Rotate)
                 {
                     OperationModelTool.Instance.AddRotaObject(_curDragObj);
                 }
-
                 GlobalConfig.Instance._curOperateObj = _curDragObj;
             }
         }
-
+        //拖拽过程区域检测回调
+        void DragCall(xuexue.common.drag2dtool.DragRecord record)
+        {
+            RaycastHit raycastHit;
+            Ray ray = Monitor23DMode.instance.camera2D.ScreenPointToRay(Input.mousePosition);
+            var uiDis = 1000f;//鼠标到UI的距离
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            {
+                uiDis = Monitor23DMode.instance.f3DSpaceInputModule.hitUIDis;
+            }
+            if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity))
+            {
+                if (uiDis < raycastHit.distance)//通过鼠标到UI跟鼠标到物体的距离判断是否进行对模型操作
+                {
+                    return;
+                }
+                DragCallback?.Invoke(record, raycastHit.transform);//当前拖拽物体和射线打中物体
+            }
+        }
     }
 }
