@@ -3,7 +3,8 @@ using UnityEngine;
 public class LiquidCtrl : MonoBehaviour
 {
     LiquidVolume lv;
-    float speed = 0.1f;
+    [Range(0.05f, 0.2f)]
+    public float speed = 0.1f;
     public enum flowDirection//流动方向
     {
         none,
@@ -30,6 +31,28 @@ public class LiquidCtrl : MonoBehaviour
             lv.extentsScale = value;
         }
     }
+    Vector2 limit = new Vector2(0, 1);//最低点和最高点.
+    public Vector2 Limit
+    {
+        get
+        {
+            return limit;
+        }
+        set
+        {
+            if (value.x <= 0)
+            {
+                value.x = 0;
+            }
+            if (value.y >= 1)
+            {
+                value.y = 1;
+            }
+            limit = value;
+            flow = true;
+        }
+
+    }
 
     //public Color32 c1, c2;
 
@@ -52,7 +75,7 @@ public class LiquidCtrl : MonoBehaviour
     /// <summary>
     /// 控制水柱流动
     /// </summary>
-    private void Update()
+    private void FixedUpdate()
     {
         if (!flow)
         {
@@ -61,16 +84,24 @@ public class LiquidCtrl : MonoBehaviour
 
         if (flowDir == flowDirection.up)
         {
-            if (Level <= 1)
+            if (Level <= Limit.y)
             {
                 Level += Time.deltaTime * speed;
+            }
+            else
+            {
+                flow = false;
             }
         }
         else
         {
-            if (Level > 0)
+            if (Level > Limit.x)
             {
                 Level -= Time.deltaTime * speed;
+            }
+            else
+            {
+                flow = false;
             }
         }
     }

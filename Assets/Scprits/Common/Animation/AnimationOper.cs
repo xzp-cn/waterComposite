@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Animator 动画播放控制
@@ -191,4 +190,3 @@ public class AnimationOper : MonoBehaviour
         timePointEvent = null;
     }
 }
-
