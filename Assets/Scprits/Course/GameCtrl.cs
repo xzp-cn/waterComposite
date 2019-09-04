@@ -1,8 +1,8 @@
 ﻿using FSpace;
+using liu;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 //[ExecuteInEditMode]
 public class GameCtrl : MonoBehaviour
 {
@@ -16,6 +16,8 @@ public class GameCtrl : MonoBehaviour
     Transform UI;
     Transform canvas;
     JiantouCtrl jiantouCtrl;
+    float leftbubbleSpeed, rightbubbleSpeed, leftTriggerSpeed, rightTriggerSpeed = 0;//左右两边气泡速度
+    bool isNaoh = false;
     public MRSystem MrSys
     {
         get
@@ -216,8 +218,11 @@ public class GameCtrl : MonoBehaviour
             simpleDrag.DragCallback = null;
             beakerAniOper.timePointEvent = null;
         }
-
+        isNaoh = false;
+        CancelInvoke();
     }
+
+
     /// <summary>
     /// 主界面底下电解按钮点击事件注册。
     /// </summary>
@@ -243,7 +248,6 @@ public class GameCtrl : MonoBehaviour
         //侧边按钮显示。
         Debug.Log("OnElectrolyteCallback:  " + "电解重置");
     }
-
     /// <summary>
     /// 电解水模块
     /// </summary>
@@ -251,6 +255,7 @@ public class GameCtrl : MonoBehaviour
     {
         OnElectrolyteCallback();
 
+        isNaoh = false;
 
         root.Find("desk/tuopan/naoh").gameObject.SetActive(false);
 
@@ -260,7 +265,45 @@ public class GameCtrl : MonoBehaviour
         UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(true);
         UI.Find("InprojectionIgnoreCanvas/naoh").gameObject.SetActive(false);
 
+        leftbubbleSpeed = 0.15f;
+        rightbubbleSpeed = 0.12f;
+        leftTriggerSpeed = 0.013f;
+        rightTriggerSpeed = 0.002f;
 
+        PlayMoudleAnimation("water");
+    }
+    /// <summary>
+    /// 电解Naoh溶液模块
+    /// </summary>
+    void NaohMoudle()
+    {
+        OnElectrolyteCallback();
+
+        isNaoh = true;
+
+        root.Find("desk/tuopan/water").gameObject.SetActive(false);
+
+        root.Find("desk/tuopan/naoh").gameObject.SetActive(true);
+        root.Find("desk/tuopan/bolibang").gameObject.SetActive(true);
+        Transform naoh = root.Find("desk/tuopan/naoh");
+        naoh.localPosition = new Vector3(0.047f, 0.04899f, 0.026f);
+
+        UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(false);
+        Transform naohUI = UI.Find("InprojectionIgnoreCanvas/naoh");
+        naohUI.localPosition = new Vector3(-272, -441, 2.334f);
+        naohUI.gameObject.SetActive(true);
+
+        leftbubbleSpeed = 0.15f * 1.1f;
+        rightbubbleSpeed = 0.12f * 1.1f;
+        leftTriggerSpeed = 0.014f * 1.1f;
+        rightTriggerSpeed = 0.008f * 1.1f;
+        PlayMoudleAnimation("naoh");
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    void PlayMoudleAnimation(string moudleName)//naoh和water
+    {
         if (jiantouCtrl == null)
         {
             jiantouCtrl = ResManager.GetPrefab("SceneRes/jiantou").GetScript<JiantouCtrl>();
@@ -274,6 +317,7 @@ public class GameCtrl : MonoBehaviour
         bc.size = new Vector3(0.28f, 0.34f, 0.05f);
         //simpleDrag.ClickAction = ClickSwitchOffCallback;//点击事件注册
 
+        GlobalConfig.Instance.operationModel = OperationModel.Stay;
         bool hasClickWater = false;
         simpleDrag.ClickAction = (clickObj) =>//玻璃棒点击提示
         {
@@ -309,26 +353,12 @@ public class GameCtrl : MonoBehaviour
                         ParticleSystem.MainModule main = ps1.main;
                         main.loop = true;
                         ps1.Play();
-                        //Debug.LogError(ps1.isPlaying);
 
-                        //中间水管水流控制
-                        LiquidCtrl middleCtrl = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/middle").gameObject.GetScript<LiquidCtrl>();
-                        middleCtrl.Level = 0;
-                        middleCtrl.speed = 0.17f;
-                        middleCtrl.flowDir = LiquidCtrl.flowDirection.up;
-                        middleCtrl.Limit = new Vector2(0.4f, 0.95f);
-                        //右边水柱水流控制
-                        LiquidCtrl leftCtrl = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/left").gameObject.GetScript<LiquidCtrl>();
-                        leftCtrl.Level = 0;
-                        leftCtrl.speed = 0.1f;
-                        leftCtrl.flowDir = LiquidCtrl.flowDirection.up;
-                        leftCtrl.Limit = new Vector2(0.4f, 0.94f);
-                        //左边水流控制
-                        LiquidCtrl rightCtrl = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/right").gameObject.GetScript<LiquidCtrl>();
-                        rightCtrl.Level = 0;
-                        rightCtrl.speed = 0.1f;
-                        rightCtrl.flowDir = LiquidCtrl.flowDirection.up;
-                        rightCtrl.Limit = new Vector2(0.4f, 0.94f);
+                        FlowWater(posNeg.middle, LiquidCtrl.flowDirection.up, 0.12f, new Vector2(0.4f, 0.95f), 0);
+                        //左边水柱水流控制                    
+                        FlowWater(posNeg.left, LiquidCtrl.flowDirection.up, 0.08f, new Vector2(0.4f, 0.94f));
+                        //右边水流控制                       
+                        FlowWater(posNeg.right, LiquidCtrl.flowDirection.up, 0.08f, new Vector2(0.4f, 0.94f), 0);
 
                     }
 
@@ -352,29 +382,30 @@ public class GameCtrl : MonoBehaviour
                         PowerSourceClick();
                     }
                 };
-            }
 
-            beakerAniOper.OnContinue();
+                beakerAniOper.OnContinue();
 
-            simpleDrag.ClickAction = (obj) =>//水杯点击提示
-            {
-                bool is3d = true;
-                if (obj.name == "water")
+                simpleDrag.ClickAction = (obj) =>//水杯点击提示
                 {
-                    hasClickWater = true;
+                    bool is3d = true;
+                    if (obj.name == moudleName)
+                    {
+                        hasClickWater = true;
 
-                    root.Find("desk/tuopan/water").gameObject.SetActive(false);
-                    root.Find("desk/pour/group16/shaobei/hx_hxyq_sb").gameObject.SetActive(true);
-                    jiantouCtrl.Show(false);
+                        root.Find("desk/tuopan/" + moudleName).gameObject.SetActive(false);
+                        root.Find("desk/pour/group16/shaobei/hx_hxyq_sb").gameObject.SetActive(true);
+                        jiantouCtrl.Show(false);
 
-                    canvas.Find("water").gameObject.SetActive(false);
+                        canvas.Find(moudleName).gameObject.SetActive(false);
 
-                    beakerAniOper.OnContinue();
-                }
-                return is3d;
-            };
+                        beakerAniOper.OnContinue();
+                    }
+                    return is3d;
+                };
+            }
             return is3D;
         };
+
     }
     /// <summary>
     /// 学生电源按钮点击
@@ -384,13 +415,14 @@ public class GameCtrl : MonoBehaviour
         jiantouCtrl.SetJiantou(new Vector3(-0.0029f, 0.0018f, 0));
         simpleDrag.ClickAction = (obj) =>
           {
-              bool is3D = false;
+              bool is3D = true;
               if (obj.name == "switchoff")//电源开关管理
               {
+                  Debug.Log("电源开关处理");
                   simpleDrag.ClickAction = null;
                   jiantouCtrl.Show(false);
                   SwitchOff(obj);
-                  Createbubble();
+                  Createbubble();//生成气泡
               }
               return is3D;
           };
@@ -401,7 +433,7 @@ public class GameCtrl : MonoBehaviour
     /// <param name="obj"></param>
     void SwitchOff(GameObject obj)
     {
-        if (obj == null)
+        if (obj != null)
         {
             float x = obj.transform.localEulerAngles.x;
             if (x != 0)
@@ -416,48 +448,106 @@ public class GameCtrl : MonoBehaviour
     }
     /// <summary>
     /// 电解产发生气泡
-    /// </summary>
+    /// </summary>    
     void Createbubble()
     {
         ParticleSystem qipao_right = root.Find("desk/qipao_right").GetComponent<ParticleSystem>();
         Transform right_trigger = qipao_right.transform.Find("right_Trigger");
         BoxCollider box;
+        BubbleCtrl bLeft, bRight;
         if (right_trigger == null)
         {
             box = new GameObject("right_Trigger").GetBoxCollider();
+            right_trigger = box.transform;
+            box.transform.SetParent(qipao_right.transform);
             box.transform.localPosition = new Vector3(-0.0008f, 0, 0.2941f);
-            box.size = new Vector3(0.015f, 0.015f, 0.01f);
+            box.size = new Vector3(0.1f, 0.01f, 0.1f);
             ParticleSystem.TriggerModule trigger = qipao_right.trigger;
+            trigger.inside = ParticleSystemOverlapAction.Kill;
+            trigger.enabled = true;
             trigger.SetCollider(0, box);
         }
+        bRight = right_trigger.gameObject.GetScript<BubbleCtrl>();
+        ParticleSystem.VelocityOverLifetimeModule right_velocity = qipao_right.velocityOverLifetime;
+        //rightbubbleSpeed = 0.15f;
+        right_velocity.z = rightbubbleSpeed;
+        qipao_right.Play();
 
         ParticleSystem qipao_left = root.Find("desk/qipao_left").GetComponent<ParticleSystem>();
+        qipao_left.transform.localPosition = new Vector3(0.175f, -0.193f, -0.007f);
         Transform left_trigger = qipao_left.transform.Find("left_Trigger");
         if (left_trigger == null)
         {
             box = new GameObject("left_Trigger").GetBoxCollider();
+            left_trigger = box.transform;
+            box.transform.SetParent(qipao_left.transform);
             box.transform.localPosition = new Vector3(0, 0, 0.2918f);
-            box.size = new Vector3(0.015f, 0.015f, 0.01f);
-            ParticleSystem.TriggerModule trigger = qipao_right.trigger;
+            box.size = new Vector3(0.1f, 0.01f, 0.1f);
+            ParticleSystem.TriggerModule trigger = qipao_left.trigger;
+            trigger.inside = ParticleSystemOverlapAction.Kill;
+            trigger.enabled = true;
             trigger.SetCollider(0, box);
         }
+        bLeft = left_trigger.gameObject.GetScript<BubbleCtrl>();
+
+        ParticleSystem.VelocityOverLifetimeModule left_velocity = qipao_left.velocityOverLifetime;
+        //leftbubbleSpeed = 0.12f;
+        left_velocity.z = leftbubbleSpeed;
+        qipao_left.Play();
+
+        //正极水柱水流控制       
+        FlowWater(posNeg.left, LiquidCtrl.flowDirection.down, 0.02f, new Vector2(0.6f, 0.94f), 0.94f);
+        //负极水流控制
+        FlowWater(posNeg.right, LiquidCtrl.flowDirection.down, 0.01f, new Vector2(0.75f, 0.94f), 0.94f);
+        //正极气泡trigger控制
+        bLeft.SetFlow(BubbleCtrl.flowDirection.down, leftTriggerSpeed, 0.07f);
+        //负极气泡trigger控制
+        bRight.SetFlow(BubbleCtrl.flowDirection.down, rightbubbleSpeed, 0.1665f);
+        //点解结束气泡停止
+        float delay = isNaoh ? 13 : 13 / 1.1f;
+        Invoke("ElectronicFinish", delay);
     }
-
-
     /// <summary>
-    /// naoh 模块
+    /// 正负极水流控制
     /// </summary>
-    void NaohMoudle()
+    /// <param name="pn"> 正负极</param>
+    /// <param name="fd">流向</param>
+    /// <param name="speed">水流速度</param>
+    /// <param name="limit">高度控制</param>
+    void FlowWater(posNeg pn, LiquidCtrl.flowDirection fd, float speed, Vector2 limit, float defaultLevel = 0)
     {
-        root.Find("desk/tuopan/water").gameObject.SetActive(false);
-
-        root.Find("desk/tuopan/naoh").gameObject.SetActive(true);
-        root.Find("desk/tuopan/bolibang").gameObject.SetActive(true);
-
-        UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(false);
-        UI.Find("InprojectionIgnoreCanvas/naoh").gameObject.SetActive(true);
+        LiquidCtrl LCtrl = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/" + pn.ToString("g")).gameObject.GetScript<LiquidCtrl>();
+        LCtrl.speed = speed;
+        LCtrl.flowDir = fd;
+        LCtrl.Level = defaultLevel;
+        LCtrl.Limit = limit;
     }
+    /// <summary>
+    /// 电解水结束
+    /// </summary>
+    void ElectronicFinish()
+    {
+        CancelInvoke("ElectronicFinish");
+        ParticleSystem qipao_right = root.Find("desk/qipao_right").GetComponent<ParticleSystem>();
+        qipao_right.Stop();
+        ParticleSystem qipao_left = root.Find("desk/qipao_left").GetComponent<ParticleSystem>();
+        qipao_left.Stop();//右边气泡停止
 
+        if (isNaoh)
+        {
+            RectTransform rt = new GameObject("naohText").AddComponent<RectTransform>();
+            rt.SetAsFirstSibling();
+            rt.SetParent(canvas);
+            rt.sizeDelta = new Vector2(550, 120);
+            rt.anchoredPosition3D = new Vector3(0, 157.8f, -2.517f);
+            rt.localScale = Vector3.one;
+            Text txt = rt.gameObject.AddComponent<Text>();
+            txt.font = Font.CreateDynamicFontFromOSFont("Arial", 34);
+            txt.text = "与单独电解纯净蒸馏水有何不同？说明什么?";
+            txt.fontSize = 34;
+            //
+        }
+    }
 
 
 
@@ -475,7 +565,17 @@ public class GameCtrl : MonoBehaviour
     }
     void OnDetectionCallback()
     {
-
+        ResetInstruments();
+        string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
+            $"观察现象\n\u3000\u3000步骤2：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，观察现象" +
+            $"\n\u3000\u3000实验后请归纳正负极气体性质";
+        SetBlackboardShow(str);
+        Transform left = UI.Find("InprojectionIgnoreCanvas/Left");
+        Transform btn = left.Find("UIButton (1)");
+        btn.gameObject.SetActive(false);
+        //重置仪器
+        //侧边按钮显示。
+        Debug.Log("OnDetectionCallback:  " + "电解重置");
     }
     /// <summary>
     /// 原理按钮点击事件注册。
@@ -489,6 +589,9 @@ public class GameCtrl : MonoBehaviour
             OnPrincipleCallback();
         }
     }
+    /// <summary>
+    /// 检测按钮
+    /// </summary>
     void OnPrincipleCallback()
     {
 
@@ -542,7 +645,12 @@ public class GameCtrl : MonoBehaviour
 
     }
 }
-
+enum posNeg
+{
+    right,//正极
+    left,//负极
+    middle,//中间水管
+}
 
 
 public class JiantouCtrl : MonoBehaviour
@@ -570,5 +678,64 @@ public class JiantouCtrl : MonoBehaviour
     public void Show(bool isShow)
     {
         transform.gameObject.SetActive(isShow);
+    }
+}
+
+/// <summary>
+/// 液面box控制
+/// </summary>
+public class BubbleCtrl : MonoBehaviour
+{
+    bool flow = false;
+    float limit;
+    float speed;
+    public enum flowDirection//流动方向
+    {
+        none,
+        up,
+        down
+    }
+    flowDirection flowDir;
+
+    public void SetFlow(flowDirection dir, float mSpeed, float mLimit)
+    {
+        flow = true;
+        flowDir = dir;
+        speed = mSpeed;
+        limit = mLimit;
+    }
+    private void Update()
+    {
+        if (!flow)
+        {
+            return;
+        }
+
+        Vector3 pos = transform.localPosition;
+        //Debug.Log(pos);
+        if (flowDir == flowDirection.up)
+        {
+            if (pos.z <= limit)
+            {
+                pos.z += Time.deltaTime * speed;
+                transform.localPosition = pos;
+            }
+            else
+            {
+                flow = false;
+            }
+        }
+        else
+        {
+            if (pos.z > limit)
+            {
+                pos.z -= Time.deltaTime * speed;
+                transform.localPosition = pos;
+            }
+            else
+            {
+                flow = false;
+            }
+        }
     }
 }

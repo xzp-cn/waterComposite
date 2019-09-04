@@ -75,7 +75,7 @@ public class LiquidCtrl : MonoBehaviour
     /// <summary>
     /// 控制水柱流动
     /// </summary>
-    private void FixedUpdate()
+    private void Update()
     {
         if (!flow)
         {
