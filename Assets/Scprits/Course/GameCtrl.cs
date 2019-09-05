@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+
+using DG.Tweening;
 using FSpace;
 using liu;
 using System.Collections.Generic;
@@ -679,16 +680,19 @@ public class GameCtrl : MonoBehaviour
             fire = new GameObject("fire").transform;
             fire.SetParent(tuopan);
 
-            fireDrag = new GameObject("fireDrag").transform;
-            fireDrag.SetParent(tuopan);
+            //fireDrag = new GameObject("fireDrag").transform;
+            //fireDrag.SetParent(tuopan);
         }
         FireInit(FireEnum.huochai);
         FireInit(FireEnum.mutiao);
+
+        //给box添加
 
         GlobalConfig.Instance.operationModel = OperationModel.Move;
         simpleDrag.canDrag = true;
         simpleDrag.DragCallback = (record, trans) =>
         {
+            
         };
     }
     /// <summary>
@@ -709,7 +713,16 @@ public class GameCtrl : MonoBehaviour
         temp.SetParent(fire);
         return temp;
     }
+    /// <summary>
+    /// 点燃火柴和木条。
+    /// </summary>
+    void FireAir(xuexue.common.drag2dtool.DragRecord record,Transform boxTr)
+    {
+        if (boxTr.name=="left")//正极
+        {
 
+        }
+    }
 
     /// <summary>
     /// 原理按钮点击事件注册。
@@ -875,6 +888,59 @@ public class BubbleCtrl : MonoBehaviour
             else
             {
                 flow = false;
+            }
+        }
+    }
+}
+
+public class FireCtrl : MonoBehaviour
+{
+    public enum FireState
+    {
+        stand,//原地初始化状态
+        move,//拖拽状态
+        fire,//燃烧状态
+    }
+    public struct FireData
+    {
+        public FireState state;//状态        
+        public string effectName;
+        public FireData(FireData fdata)
+        {
+            state = fdata.state;         
+            effectName = fdata.effectName;
+        }
+    }     
+    /// <summary>
+    /// 切换到下一个状态所做更改
+    /// </summary>
+    /// <param name="fdata"></param>
+    public void ChangeState(FireData fdata)
+    {
+        if (fdata.state==FireState.stand|| fdata.state == FireState.move)//初始化和拖拽状态
+        {
+            gameObject.GetBoxCollider().enabled = true;
+            gameObject.SetActive(true);
+            ParticleSystem[] ps=this.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < ps.Length; i++)
+            {
+                ps[i].Stop();
+            }
+        }  
+        else//点火状态
+        {
+            gameObject.GetBoxCollider().enabled = false;
+            ParticleSystem[] ps = this.GetComponentsInChildren<ParticleSystem>();
+            for (int i = 0; i < ps.Length; i++)
+            {
+                if (ps[i].name==fdata.effectName)
+                {
+                    ps[i].Play();
+                }       
+                else
+                {
+                    ps[i].Stop();
+                }
             }
         }
     }
