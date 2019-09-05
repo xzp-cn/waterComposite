@@ -152,7 +152,7 @@ namespace FSpace
         /// </summary>
         public System.Func<GameObject, bool> ClickAction;//3d物体点击一帧回调.      
         /// <summary>
-        /// 物体拖拽每帧回调.
+        /// 物体拖拽，拖拽物体，射线打中物体
         /// </summary>
         public System.Action<xuexue.common.drag2dtool.DragRecord, Transform> DragCallback;
         public bool canDrag = true; //控制物体是否可以拖拽
@@ -206,6 +206,10 @@ namespace FSpace
         //拖拽过程区域检测回调
         void DragCall(xuexue.common.drag2dtool.DragRecord record)
         {
+            if (DragCallback == null)
+            {
+                return;
+            }
             RaycastHit raycastHit;
             Ray ray = Monitor23DMode.instance.camera2D.ScreenPointToRay(Input.mousePosition);
             var uiDis = 1000f;//鼠标到UI的距离

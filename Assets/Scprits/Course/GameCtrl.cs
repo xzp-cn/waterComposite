@@ -1,4 +1,5 @@
-﻿using FSpace;
+﻿using DG.Tweening;
+using FSpace;
 using liu;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,11 +11,13 @@ public class GameCtrl : MonoBehaviour
     Dictionary<string, GameObject> sceenDic = new Dictionary<string, GameObject>();
     public GameObject curScene;
     string[] sceneArray = new string[] { "Electrolyte", "Detection", "Principle" };//电解，检验，原理。
-    AnimationOper beakerAniOper;
+    AnimationOper beakerAniOper, shuiAni;
     MRSystem msys;
     Transform root;
     Transform UI;
     Transform canvas;
+    Transform fire;
+    Transform fireDrag;
     JiantouCtrl jiantouCtrl;
     float leftbubbleSpeed, rightbubbleSpeed, leftTriggerSpeed, rightTriggerSpeed = 0;//左右两边气泡速度
     bool isNaoh = false;
@@ -62,6 +65,10 @@ public class GameCtrl : MonoBehaviour
     {
         //场景底部按钮
         UI = Tools.GetScenesObj("UI").transform;
+        if (UI == null)
+        {
+            UI = Tools.GetScenesObj("MRSystem").transform.Find("UI");
+        }
         Transform middleUI = UI.Find("InprojectionIgnoreCanvas/BottomCenter/MiddleUI").transform;
         Toggle[] tgs = middleUI.GetComponentsInChildren<Toggle>();
         string[] btnNames = new string[] { "电解", "检验", "原理" };
@@ -132,15 +139,40 @@ public class GameCtrl : MonoBehaviour
         beakerAniOper = desk.Find("pour").gameObject.GetAnimatorOper();
         beakerAniOper.PlayForward("pour");
         beakerAniOper.OnPause();
+        shuiAni = root.Find("desk/shui").gameObject.GetAnimatorOper();
+        shuiAni.OnPause();
         //桌子烧杯玻璃棒隐藏
         desk.Find("pour/group16/shaobei/hx_hxyq_sb").gameObject.SetActive(false);
         desk.Find("pour/hx_hxyq_blb").gameObject.SetActive(false);
+
+        //仪器两边活塞设置
+        Transform rightBtn = desk.Find("pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface20");
+        Transform niu = rightBtn.Find("niu");
+        if (niu == null)
+        {
+            niu = ResManager.GetPrefab("SceneRes/niu").transform;
+            niu.SetParent(rightBtn);
+            niu.localPosition = Vector3.zero;
+            niu.localRotation = Quaternion.Euler(90, 180, 0);
+            niu.localScale = Vector3.one;
+        }
+        Transform leftBtn = desk.Find("pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface23");
+        niu = leftBtn.Find("niu");
+        if (niu == null)
+        {
+            niu = ResManager.GetPrefab("SceneRes/niu").transform;
+            niu.SetParent(leftBtn);
+            niu.localPosition = Vector3.zero;
+            niu.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+            niu.localScale = Vector3.one;
+        }
+
         //托盘隐藏
         Transform tuopan = desk.Find("tuopan");
         tuopan.GetComponent<MeshRenderer>().enabled = false;
         tuopan.localPosition = new Vector3(0.365f, -0.2132f, -0.0691f);
 
-        root.Find("desk/tuopan/huochai").gameObject.SetActive(false);
+        //root.Find("desk/tuopan/huochai").gameObject.SetActive(false);
 
         //黑板内容显示。         
         string blackBoadStr = "\n\u3000\u3000实验仪器:\n\u3000\u3000水电解器、学生电源、蒸馏水、滴加少量氢氧化钠的蒸馏水、火柴、玻璃棒";
@@ -265,8 +297,8 @@ public class GameCtrl : MonoBehaviour
         UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(true);
         UI.Find("InprojectionIgnoreCanvas/naoh").gameObject.SetActive(false);
 
-        leftbubbleSpeed = 0.15f;
-        rightbubbleSpeed = 0.12f;
+        leftbubbleSpeed = 0.18f;
+        rightbubbleSpeed = 0.15f;
         leftTriggerSpeed = 0.013f;
         rightTriggerSpeed = 0.002f;
 
@@ -293,10 +325,10 @@ public class GameCtrl : MonoBehaviour
         naohUI.localPosition = new Vector3(-272, -441, 2.334f);
         naohUI.gameObject.SetActive(true);
 
-        leftbubbleSpeed = 0.15f * 1.1f;
-        rightbubbleSpeed = 0.12f * 1.1f;
+        leftbubbleSpeed = 0.18f * 1.1f;
+        rightbubbleSpeed = 0.15f * 1.1f;
         leftTriggerSpeed = 0.014f * 1.1f;
-        rightTriggerSpeed = 0.008f * 1.1f;
+        rightTriggerSpeed = 0.002f * 1.1f;
         PlayMoudleAnimation("naoh");
     }
     /// <summary>
@@ -328,11 +360,13 @@ public class GameCtrl : MonoBehaviour
                 is3D = true;
                 root.Find("desk/tuopan/bolibang").gameObject.SetActive(false);
                 root.Find("desk/pour/hx_hxyq_blb").gameObject.SetActive(true);
+                GameObject sb = root.Find("desk/pour/group16/shaobei/hx_hxyq_sb").gameObject;
 
                 bool pass = false;
                 bool pass1 = false;
                 bool pass2 = false;
                 bool pass3 = false;
+                bool pass4 = false;
                 beakerAniOper.timePointEvent = (t) =>
                 {
                     //Debug.Log(t);
@@ -360,6 +394,25 @@ public class GameCtrl : MonoBehaviour
                         //右边水流控制                       
                         FlowWater(posNeg.right, LiquidCtrl.flowDirection.up, 0.08f, new Vector2(0.4f, 0.94f), 0);
 
+                        //烧杯水流控制
+                        LiquidCtrl LCtrl = sb.GetScript<LiquidCtrl>();
+                        LCtrl.speed = 0.1f;
+                        LCtrl.flowDir = LiquidCtrl.flowDirection.down;
+                        LCtrl.Level = 1;
+                        LCtrl.Limit = new Vector2(0, 1);
+
+                        //相机拉近                     
+                        UI.SetParent(MrSys.transform);
+
+                        MrSys.transform.DOLocalMove(new Vector3(0, 0, 4), 2f);
+                    }
+
+                    if (t >= 200 && t <= 202 && !pass4)
+                    {
+                        pass4 = true;
+                        shuiAni.PlayForward("pingzi22", 190);
+                        shuiAni.OnContinue();
+                        //MrSys.transform.DOLocalMove(new Vector3(0, 0, 3), 1f);
                     }
 
                     if (t >= 345 && t <= 347 && !pass2)
@@ -393,7 +446,10 @@ public class GameCtrl : MonoBehaviour
                         hasClickWater = true;
 
                         root.Find("desk/tuopan/" + moudleName).gameObject.SetActive(false);
-                        root.Find("desk/pour/group16/shaobei/hx_hxyq_sb").gameObject.SetActive(true);
+                        sb.SetActive(true);
+                        LiquidCtrl sbCtrl = sb.GetScript<LiquidCtrl>();
+                        sbCtrl.Level = 1;
+
                         jiantouCtrl.Show(false);
 
                         canvas.Find(moudleName).gameObject.SetActive(false);
@@ -412,6 +468,7 @@ public class GameCtrl : MonoBehaviour
     /// </summary>
     void PowerSourceClick()
     {
+        MrSys.transform.DOLocalMove(Vector3.zero, 2f);
         jiantouCtrl.SetJiantou(new Vector3(-0.0029f, 0.0018f, 0));
         simpleDrag.ClickAction = (obj) =>
           {
@@ -451,6 +508,10 @@ public class GameCtrl : MonoBehaviour
     /// </summary>    
     void Createbubble()
     {
+        MrSys.transform.DOLocalMove(new Vector3(0, -1.5f, 5), 2f).onComplete = () =>
+        {
+            //MrSys.transform.DOLocalMove(new Vector3(0, -1, 4), 2);
+        };
         ParticleSystem qipao_right = root.Find("desk/qipao_right").GetComponent<ParticleSystem>();
         Transform right_trigger = qipao_right.transform.Find("right_Trigger");
         BoxCollider box;
@@ -502,8 +563,9 @@ public class GameCtrl : MonoBehaviour
         //正极气泡trigger控制
         bLeft.SetFlow(BubbleCtrl.flowDirection.down, leftTriggerSpeed, 0.07f);
         //负极气泡trigger控制
-        bRight.SetFlow(BubbleCtrl.flowDirection.down, rightbubbleSpeed, 0.1665f);
-        //点解结束气泡停止
+        bRight.SetFlow(BubbleCtrl.flowDirection.down, rightTriggerSpeed, 0.1665f);
+        //点解结束气泡停止     
+
         float delay = isNaoh ? 13 : 13 / 1.1f;
         Invoke("ElectronicFinish", delay);
     }
@@ -547,6 +609,7 @@ public class GameCtrl : MonoBehaviour
             txt.fontSize = 34;
             //
         }
+        MrSys.transform.DOLocalMove(Vector3.zero, 2);
     }
 
 
@@ -567,16 +630,87 @@ public class GameCtrl : MonoBehaviour
     {
         ResetInstruments();
         string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
-            $"观察现象\n\u3000\u3000步骤2：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，观察现象" +
+            $"观察现象\n\u3000\u3000步骤2：分别用带火星的木条和点燃的火柴靠近负极玻璃管尖嘴处，打开活塞，观察现象" +
             $"\n\u3000\u3000实验后请归纳正负极气体性质";
         SetBlackboardShow(str);
+        //左侧按钮隐藏
         Transform left = UI.Find("InprojectionIgnoreCanvas/Left");
         Transform btn = left.Find("UIButton (1)");
         btn.gameObject.SetActive(false);
-        //重置仪器
+        //ui隐藏        
+        Transform waterUI = canvas.Find("water");
+        Transform naohUI = canvas.Find("naoh");
+        if (naohUI)
+        {
+            naohUI.gameObject.SetActive(false);
+        }
+        if (waterUI)
+        {
+            waterUI.gameObject.SetActive(false);
+        }
+
+        Transform sqPar = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1");
+
+        LiquidCtrl rightCtrl = sqPar.Find("right").gameObject.GetScript<LiquidCtrl>();
+        rightCtrl.Level = 0.75f;
+
+        LiquidCtrl leftCtrl = sqPar.Find("left").gameObject.GetScript<LiquidCtrl>();
+        leftCtrl.Level = 0.6f;
+
+        DectectMoudle();
         //侧边按钮显示。
         Debug.Log("OnDetectionCallback:  " + "电解重置");
     }
+    /// <summary>
+    /// 检测模块
+    /// </summary>
+    void DectectMoudle()
+    {
+        //检测模块
+        //火柴和木条显示       
+        Transform tuopan = root.Find("desk/tuopan");
+        tuopan.Find("water").gameObject.SetActive(false);
+        tuopan.Find("naoh").gameObject.SetActive(false);
+        tuopan.Find("bolibang").gameObject.SetActive(false);
+
+        fire = tuopan.Find("fire");
+        if (fire == null)
+        {
+            fire = new GameObject("fire").transform;
+            fire.SetParent(tuopan);
+
+            fireDrag = new GameObject("fireDrag").transform;
+            fireDrag.SetParent(tuopan);
+        }
+        FireInit(FireEnum.huochai);
+        FireInit(FireEnum.mutiao);
+
+        GlobalConfig.Instance.operationModel = OperationModel.Move;
+        simpleDrag.canDrag = true;
+        simpleDrag.DragCallback = (record, trans) =>
+        {
+        };
+    }
+    /// <summary>
+    /// firename
+    /// </summary>
+    /// <param name="fireName"></param>
+    /// <returns></returns>
+    Transform FireInit(FireEnum fireName)
+    {
+        Transform tuopan = root.Find("desk/tuopan");
+        string fname = fireName.ToString("g");
+        Transform temp = fire.Find(fname);
+        if (temp == null)
+        {
+            temp = ResManager.GetPrefab("SceneRes/" + fname).transform;
+            temp.name = fname;
+        }
+        temp.SetParent(fire);
+        return temp;
+    }
+
+
     /// <summary>
     /// 原理按钮点击事件注册。
     /// </summary>
@@ -650,6 +784,12 @@ enum posNeg
     right,//正极
     left,//负极
     middle,//中间水管
+    //shaobei //烧杯水流控制。
+}
+enum FireEnum
+{
+    huochai,//火柴
+    mutiao,//木条
 }
 
 

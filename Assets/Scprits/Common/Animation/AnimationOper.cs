@@ -83,17 +83,18 @@ public class AnimationOper : MonoBehaviour
             currLength = 0;
             IsStart = false;
             curFrame = lastFrame = -1;
-            //anim.CrossFade(clipName, transitionTime, 0, offset);
-            anim.Play(clipName, 0, offset);
+            //anim.CrossFade(clipName, transitionTime, 0, offset);          
             System.Array.FindIndex(anim.runtimeAnimatorController.animationClips, (ac) =>
             {
                 if (ac.name == animName)
                 {
                     timeLength = ac.length;
+                    offset /= (timeLength * anim.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate);
                     return true;
                 }
                 return false;
             });
+            anim.Play(clipName, 0, offset);
             //timeLength = anim.GetCurrentAnimatorStateInfo(0).length;
             IsStart = true;
         }
