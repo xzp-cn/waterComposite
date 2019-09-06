@@ -163,7 +163,7 @@ namespace FSpace
                 return;
             }
             RaycastHit raycastHit;
-            //int defaultLayer = LayerMask.NameToLayer("Default");//这个层是模型
+            int defaultLayer = LayerMask.NameToLayer("Default");//这个层是模型
             Ray ray = Monitor23DMode.instance.camera2D.ScreenPointToRay(Input.mousePosition);
             var uiDis = 1000f;//鼠标到UI的距离
             if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
@@ -171,7 +171,7 @@ namespace FSpace
                 uiDis = Monitor23DMode.instance.f3DSpaceInputModule.hitUIDis;
             }
             GameObject dragObj = null;
-            if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity/*, 1 << defaultLayer*/))
+            if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity, 1 << defaultLayer))
             {
                 if (uiDis < raycastHit.distance)//通过鼠标到UI跟鼠标到物体的距离判断是否进行对模型操作
                 {
@@ -194,6 +194,7 @@ namespace FSpace
                 {
                     Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
                     xuexue.common.drag2dtool.DragRecord dr = Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
+
                     dr.SetOnMouseMove(DragCall, 0);
                 }
                 else if (GlobalConfig.Instance.operationModel == OperationModel.Rotate)
@@ -203,7 +204,8 @@ namespace FSpace
                 GlobalConfig.Instance._curOperateObj = _curDragObj;
             }
         }
-        //拖拽过程区域检测回调
+
+        //拖拽过程区域检测回调 每一帧
         void DragCall(xuexue.common.drag2dtool.DragRecord record)
         {
             if (DragCallback == null)
@@ -217,7 +219,7 @@ namespace FSpace
             {
                 uiDis = Monitor23DMode.instance.f3DSpaceInputModule.hitUIDis;
             }
-            if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity, 1 << 11))
             {
                 if (uiDis < raycastHit.distance)//通过鼠标到UI跟鼠标到物体的距离判断是否进行对模型操作
                 {
