@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 556145652, guid: d172fc4acdcc9f04c903f2c1af310d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutoSlant: 1
-  ViewerScale: 1
+  isAutoSlant: 0
+  ViewerScale: 8
 --- !u!4 &412819187
 Transform:
   m_ObjectHideFlags: 0

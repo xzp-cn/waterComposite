@@ -823,16 +823,28 @@ public class GameCtrl : MonoBehaviour
         fctrl.SetLeftRight(pn,boxTr);
         UI.transform.SetParent(MrSys.transform);
 
+        Transform niuRight=root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface20/niu");
+        niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+        Transform niuLeft= root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface23/niu");
+        niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+
         DOTween.KillAll();
         float t = 0;
+        Tweener twNiu=null;
         DOTween.To(           
-            () => { Tweener tw = MrSys.transform.DOLocalMove(new Vector3(0.2f, 0, 5), 1); return tw.Delay(); },
-            (a) => { t = a;},
+            () => { Tweener tw = MrSys.transform.DOLocalMove(new Vector3(0.2f, 0, 5), 0.5f); return tw.Delay(); },
+            (a) => {
+                Transform _niu = pn == posNeg.left ? niuLeft : niuRight;
+                twNiu = _niu.DOLocalRotate(Vector3.zero, 2);
+                //tw.Complete();            
+                },
             1,
             3
         ).onComplete=()=> {
             MrSys.transform.DOLocalMove(Vector3.zero, 2).onComplete=()=>
-            {
+            {             
+                niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                niuLeft.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
                 if (mFireNum.AllOver())
                 {
                     string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
@@ -847,6 +859,8 @@ public class GameCtrl : MonoBehaviour
         };
       
     }
+
+
 
     /// <summary>
     /// 原理按钮点击事件注册。
@@ -864,6 +878,10 @@ public class GameCtrl : MonoBehaviour
     /// 检测按钮
     /// </summary>
     void OnPrincipleCallback()
+    {
+
+    }
+    void PrincipleMoudle()
     {
 
     }
@@ -1043,6 +1061,7 @@ public class FireCtrl : MonoBehaviour
     /// <param name="effectName"></param>
     void PlayEffect(posNeg pn)
     {
+        Debug.LogError(pn.ToString("g"));
         switch (pn)
         {
             case posNeg.right://负极
@@ -1069,12 +1088,17 @@ public class FireCtrl : MonoBehaviour
             case posNeg.left://正极
                 if (this.name=="huochai")//火柴燃烧更旺
                 {
-                    ParticleSystem[] ps = transform.GetComponentsInChildren<ParticleSystem>();
-                    ps[0].Play();
-                    ps[1].Stop();
-                    ps[2].transform.localPosition = new Vector3(0, 0.015f, 0);
-                    ps[2].transform.localRotation = Quaternion.Euler(new Vector3(120, 90, 0));
-                    ps[2].Play();
+                    ParticleSystem psg = transform.Find("hx_hxyq_hxmt/guang").GetComponent<ParticleSystem>();
+                    psg.Play();
+
+                    ParticleSystem huo1 = transform.Find("hx_hxyq_hxmt/huo1").GetComponent<ParticleSystem>();
+                    huo1.Stop();
+
+                    ParticleSystem huo2 = transform.Find("hx_hxyq_hxmt/huo2").GetComponent<ParticleSystem>();
+                    huo2.transform.localPosition = new Vector3(0, 0.015f, 0);
+                    huo2.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                    huo2.Play();
+                    Debug.Log(huo2.name);
                 }
                 else
                 {                    
