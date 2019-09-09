@@ -17,7 +17,7 @@ public class GameCtrl : MonoBehaviour
     Transform root;
     Transform UI;
     Transform canvas;
-    Transform hcPar;    
+    Transform hcPar;
     Transform dragPar;
     JiantouCtrl jiantouCtrl;
     float leftbubbleSpeed, rightbubbleSpeed, leftTriggerSpeed, rightTriggerSpeed = 0;//左右两边气泡速度
@@ -45,7 +45,7 @@ public class GameCtrl : MonoBehaviour
         public bool AllOver()
         {
             bool over = false;
-            if (huochaiNegNum>0&& huochaiPosNum>0&& mtNegNum>0&& mtPosNum>0)
+            if (huochaiNegNum > 0 && huochaiPosNum > 0 && mtNegNum > 0 && mtPosNum > 0)
             {
                 over = true;
             }
@@ -145,13 +145,12 @@ public class GameCtrl : MonoBehaviour
         {
 
             GameObject pn = ResManager.GetPrefab("SceneRes/posNeg");
-            pn.name = "posNeg";           
+            pn.name = "posNeg";
             pn.transform.SetParent(left.parent, false);
             pn.transform.SetAsFirstSibling();
-            pn.transform.Find("pos").localPosition = new Vector3(-123, 0, 0);
-            pn.transform.Find("neg").localPosition = new Vector3(300, 0, 0);
+            pn.transform.Find("pos").localPosition = new Vector3(-100, -358f, 0);
+            pn.transform.Find("neg").localPosition = new Vector3(290, -360, 0);
         }
-
 
         //场景资源加载
         //3D     
@@ -238,6 +237,19 @@ public class GameCtrl : MonoBehaviour
             naoh_text.transform.localPosition = new Vector3(-540, -441, 2.334f);
             naoh_text.transform.SetAsFirstSibling();
         }
+        //黑板ui重置
+        Transform equ = canvas.Find("equation");
+        if (equ != null)
+        {
+            equ.gameObject.SetActive(false);
+        }
+
+        Transform chemicalEquation = canvas.Find("chemicalEquation");
+        if (chemicalEquation != null)
+        {
+            chemicalEquation.gameObject.SetActive(false);
+        }
+
         //火柴设置
         hcPar = tuopan.Find("hcPar");
         if (hcPar == null)
@@ -259,7 +271,7 @@ public class GameCtrl : MonoBehaviour
             Vector3 scale = fname == FireEnum.huochai.ToString("g") ? new Vector3(1, 2, 1) : new Vector3(10, 20, 10);
             obj.transform.localScale = scale;
             FireCtrl fCtrl = obj.GetScript<FireCtrl>();
-        }        
+        }
         beakerAniOper.timePointEvent = null;
     }
     /// <summary>
@@ -567,7 +579,7 @@ public class GameCtrl : MonoBehaviour
     /// <summary>
     /// 电解产发生气泡
     /// </summary>    
-    void Createbubble()
+    void Createbubble(bool isFinish = true)
     {
         MrSys.transform.DOLocalMove(new Vector3(0, -1.5f, 5), 2f).onComplete = () =>
         {
@@ -627,8 +639,11 @@ public class GameCtrl : MonoBehaviour
         bRight.SetFlow(BubbleCtrl.flowDirection.down, rightTriggerSpeed, 0.1665f);
         //点解结束气泡停止     
 
-        float delay = isNaoh ? 13 : 13 / 1.1f;
-        Invoke("ElectronicFinish", delay);
+        if (isFinish)
+        {
+            float delay = isNaoh ? 13 : 13 / 1.1f;
+            Invoke("ElectronicFinish", delay);
+        }
     }
     /// <summary>
     /// 正负极水流控制
@@ -742,7 +757,7 @@ public class GameCtrl : MonoBehaviour
         Transform left = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/left");
         left.gameObject.layer = 11;
 
-    
+
         dragPar = tuopan.Find("dragPar");
         if (dragPar == null)
         {
@@ -750,13 +765,13 @@ public class GameCtrl : MonoBehaviour
             dragPar.SetParent(tuopan);
             dragPar.localScale = Vector3.one;
             dragPar.localPosition = Vector3.zero;
-        }        
+        }
         hcPar.gameObject.SetActive(true);
 
         GlobalConfig.Instance.operationModel = OperationModel.Move;
         simpleDrag.canDrag = true;
         simpleDrag.ClickAction = (obj) =>//处理桌子上的点击物体
-        {            
+        {
             ClickDeskCallback(obj);
             return false;
         };
@@ -767,99 +782,99 @@ public class GameCtrl : MonoBehaviour
     }
     void ClickDeskCallback(GameObject obj)
     {
-        if (obj.transform.parent!=hcPar)
+        if (obj.transform.parent != hcPar)
         {
             return;
         }
         string objName = obj.name;
-        Transform deskObj= dragPar.Find(objName);
-        if (deskObj!=null)
+        Transform deskObj = dragPar.Find(objName);
+        if (deskObj != null)
         {
-           FireCtrl fCtrl=deskObj.gameObject.GetScript<FireCtrl>();
+            FireCtrl fCtrl = deskObj.gameObject.GetScript<FireCtrl>();
             fCtrl.Reset();
         }
         obj.transform.SetParent(dragPar);
-    
+
         //桌子上的火柴或者木条
-       deskObj= hcPar.Find(objName);    
-        if (deskObj==null)
+        deskObj = hcPar.Find(objName);
+        if (deskObj == null)
         {
-           GameObject mObj= ResManager.GetPrefab("SceneRes/" + objName);
+            GameObject mObj = ResManager.GetPrefab("SceneRes/" + objName);
             mObj.transform.SetParent(hcPar);
             mObj.name = objName;
-            mObj.transform.localPosition = objName == FireEnum.huochai.ToString("g") ? Vector3.zero: new Vector3(-0.168f, 0, 0);
+            mObj.transform.localPosition = objName == FireEnum.huochai.ToString("g") ? Vector3.zero : new Vector3(-0.168f, 0, 0);
             Vector3 scale = objName == FireEnum.huochai.ToString("g") ? new Vector3(1, 2, 1) : new Vector3(10, 20, 10);
             mObj.transform.localScale = scale;
             FireCtrl fCtrl = mObj.GetScript<FireCtrl>();
         }
-    } 
+    }
     /// <summary>
     /// 火柴和木条放到仪器上面回调。
     /// </summary>
     void FireAir(xuexue.common.drag2dtool.DragRecord record, Transform boxTr)
     {
         posNeg pn;
-        if (boxTr.name=="left")//正极
+        if (boxTr.name == "left")//正极
         {
             //当前一起面物体删除         
             pn = posNeg.left;
-            int a=record.dragObj.name == "huochai" ? ++mFireNum.huochaiPosNum: ++mFireNum.mtPosNum;            
+            int a = record.dragObj.name == "huochai" ? ++mFireNum.huochaiPosNum : ++mFireNum.mtPosNum;
         }
         else
         {
             pn = posNeg.right;
             int a = record.dragObj.name == "huochai" ? ++mFireNum.huochaiNegNum : ++mFireNum.mtNegNum;
         }
-        int  count= boxTr.childCount;
-        if (count>0)
+        int count = boxTr.childCount;
+        if (count > 0)
         {
             Transform tr = boxTr.GetChild(0);
             Destroy(tr.gameObject);
         }
-             
+
         xuexue.common.drag2dtool.Drag2DTool.Instance.deleteDragObj(record.dragObj.gameObject);
         //当前拖拽物体设置到仪器上。
         FireCtrl fctrl = record.dragObj.gameObject.GetScript<FireCtrl>();
-        fctrl.SetLeftRight(pn,boxTr);
+        fctrl.SetLeftRight(pn, boxTr);
         UI.transform.SetParent(MrSys.transform);
 
-        Transform niuRight=root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface20/niu");
+        Transform niuRight = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface20/niu");
         niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
-        Transform niuLeft= root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface23/niu");
+        Transform niuLeft = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1/polySurface23/niu");
         niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
 
         DOTween.KillAll();
         float t = 0;
-        Tweener twNiu=null;
-        DOTween.To(           
+        Tweener twNiu = null;
+        DOTween.To(
             () => { Tweener tw = MrSys.transform.DOLocalMove(new Vector3(0.2f, 0, 5), 0.5f); return tw.Delay(); },
-            (a) => {
+            (a) =>
+            {
                 Transform _niu = pn == posNeg.left ? niuLeft : niuRight;
                 twNiu = _niu.DOLocalRotate(Vector3.zero, 2);
                 //tw.Complete();            
-                },
+            },
             1,
             3
-        ).onComplete=()=> {
-            MrSys.transform.DOLocalMove(Vector3.zero, 2).onComplete=()=>
-            {             
-                niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                niuLeft.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                if (mFireNum.AllOver())
-                {
-                    string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
-           $"观察现象\n\u3000\u3000步骤2：分别用带火星的木条和点燃的火柴靠近负极玻璃管尖嘴处，打开活塞，观察现象" +
-           $"\n\u3000\u3000正极产生氧气，负极产生氢气";
+        ).onComplete = () =>
+        {
+            MrSys.transform.DOLocalMove(Vector3.zero, 2).onComplete = () =>
+              {
+                  niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                  niuLeft.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                  if (mFireNum.AllOver())
+                  {
+                      string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
+             $"观察现象\n\u3000\u3000步骤2：分别用带火星的木条和点燃的火柴靠近负极玻璃管尖嘴处，打开活塞，观察现象" +
+             $"\n\u3000\u3000正极产生氧气，负极产生氢气";
+                      SetBlackboardShow(str);
 
-                simpleDrag.ClickAction = null;
-                GlobalConfig.Instance.operationModel = OperationModel.Stay;
-                }
-            };
-
+                      simpleDrag.ClickAction = null;
+                      GlobalConfig.Instance.operationModel = OperationModel.Stay;
+                  }
+              };
         };
-      
     }
-
 
 
     /// <summary>
@@ -879,12 +894,176 @@ public class GameCtrl : MonoBehaviour
     /// </summary>
     void OnPrincipleCallback()
     {
+        ResetInstruments();
 
+        Transform equTr = canvas.Find("equation");
+        if (equTr == null)
+        {
+            equTr = ResManager.GetPrefab("SceneRes/equation").transform;
+            equTr.SetParent(canvas, false);
+            equTr.SetAsFirstSibling();
+        }
+        equTr.gameObject.SetActive(true);
+        Equation equ = equTr.gameObject.GetScript<Equation>();
+
+        string str = string.Empty;
+        SetBlackboardShow(str);
+
+        Transform chequa = canvas.Find("chemicalEquation");
+        if (chequa == null)
+        {
+            chequa = ResManager.GetPrefab("SceneRes/chemicalEquation").transform;
+            chequa.SetParent(canvas, false);
+            chequa.localPosition = new Vector3(0, 120, 6.6f);
+        }
+        chequa.transform.SetAsFirstSibling();
+        chequa.gameObject.SetActive(true);
+
+        //左侧按钮隐藏
+        Transform left = UI.Find("InprojectionIgnoreCanvas/Left");
+        Transform btn = left.Find("UIButton (1)");
+        btn.gameObject.SetActive(false);
+
+        //ui隐藏        
+        Transform waterUI = canvas.Find("water");
+        Transform naohUI = canvas.Find("naoh");
+        if (naohUI)
+        {
+            naohUI.gameObject.SetActive(false);
+        }
+        if (waterUI)
+        {
+            waterUI.gameObject.SetActive(false);
+        }
+
+        //桌面盘子中水杯隐藏。
+        Transform tuopan = root.Find("desk/tuopan");
+        tuopan.gameObject.SetActive(false);
+
+        Transform sqPar = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1");
+        LiquidCtrl rightCtrl = sqPar.Find("right").gameObject.GetScript<LiquidCtrl>();
+        rightCtrl.Level = 0.94f;
+        LiquidCtrl leftCtrl = sqPar.Find("left").gameObject.GetScript<LiquidCtrl>();
+        leftCtrl.Level = 0.94f;
+
+        PrincipleMoudle();
     }
     void PrincipleMoudle()
     {
+        if (jiantouCtrl == null)
+        {
+            jiantouCtrl = ResManager.GetPrefab("SceneRes/jiantou").GetScript<JiantouCtrl>();
+        }
+        jiantouCtrl.SetJiantou(new Vector3(0.0128f, -0.0076f, -0.0303f));
+
+        //电源按钮点击
+        jiantouCtrl.SetJiantou(new Vector3(-0.0029f, 0.0018f, 0));
+        GlobalConfig.Instance.operationModel = OperationModel.Stay;
+        simpleDrag.canDrag = true;
+        simpleDrag.ClickAction = (obj) =>
+        {
+            bool is3D = true;
+            if (obj.name == "switchoff")//电源开关管理
+            {
+                Debug.Log("电源开关处理");
+                simpleDrag.ClickAction = null;
+                jiantouCtrl.Show(false);
+                SwitchOff(obj);
+                PrincleMoudleCreatebubble();//生成气泡
+                MicroScene();
+            }
+            return is3D;
+        };
 
     }
+    void PrincleMoudleCreatebubble()
+    {
+        ParticleSystem qipao_right = root.Find("desk/qipao_right").GetComponent<ParticleSystem>();
+        Transform right_trigger = qipao_right.transform.Find("right_Trigger");
+        BoxCollider box;
+        BubbleCtrl bLeft, bRight;
+        if (right_trigger == null)
+        {
+            box = new GameObject("right_Trigger").GetBoxCollider();
+            right_trigger = box.transform;
+            box.transform.SetParent(qipao_right.transform);
+            box.transform.localPosition = new Vector3(-0.0008f, 0, 0.2941f);
+            box.size = new Vector3(0.1f, 0.01f, 0.1f);
+            ParticleSystem.TriggerModule trigger = qipao_right.trigger;
+            trigger.inside = ParticleSystemOverlapAction.Kill;
+            trigger.enabled = true;
+            trigger.SetCollider(0, box);
+        }
+        bRight = right_trigger.gameObject.GetScript<BubbleCtrl>();
+        ParticleSystem.VelocityOverLifetimeModule right_velocity = qipao_right.velocityOverLifetime;
+        //rightbubbleSpeed = 0.15f;
+        right_velocity.z = rightbubbleSpeed;
+        qipao_right.Play();
+
+        ParticleSystem qipao_left = root.Find("desk/qipao_left").GetComponent<ParticleSystem>();
+        qipao_left.transform.localPosition = new Vector3(0.175f, -0.193f, -0.007f);
+        Transform left_trigger = qipao_left.transform.Find("left_Trigger");
+        if (left_trigger == null)
+        {
+            box = new GameObject("left_Trigger").GetBoxCollider();
+            left_trigger = box.transform;
+            box.transform.SetParent(qipao_left.transform);
+            box.transform.localPosition = new Vector3(0, 0, 0.2918f);
+            box.size = new Vector3(0.1f, 0.01f, 0.1f);
+            ParticleSystem.TriggerModule trigger = qipao_left.trigger;
+            trigger.inside = ParticleSystemOverlapAction.Kill;
+            trigger.enabled = true;
+            trigger.SetCollider(0, box);
+        }
+        bLeft = left_trigger.gameObject.GetScript<BubbleCtrl>();
+
+        ParticleSystem.VelocityOverLifetimeModule left_velocity = qipao_left.velocityOverLifetime;
+        //leftbubbleSpeed = 0.12f;
+        left_velocity.z = leftbubbleSpeed;
+        qipao_left.Play();
+    }
+    //微小场景
+    void MicroScene()
+    {
+        UI.SetParent(MrSys.transform, false);
+        //加载微观场景
+
+        ParticleSystem ps_right = root.Find("desk/qipao_right").GetComponent<ParticleSystem>();
+        ps_right.Play();
+        ParticleSystem.MainModule main = ps_right.main;
+        main.startSpeed = 0.1f;
+        ParticleSystem ps_left = root.Find("desk/qipao_left").GetComponent<ParticleSystem>();
+        ps_left.Play();
+
+        LiquidCtrl lctl = root.Find("desk/shuidi").gameObject.GetScript<LiquidCtrl>();
+        lctl.SolutionVibration(0.68f, 1f, 0.66f, 0.4f, 0.3f, 0.5f);
+        DOTween.To(
+            () =>
+            {
+                //相机拉近
+                Debug.LogError("camera");
+                MrSys.transform.DOLocalMove(new Vector3(0.24f, -2f, 5.5f), 2).onComplete = () =>
+                {
+                    //
+                    Debug.LogError("complete");
+                };
+                return 1;
+            },
+            (a) =>//每一帧都执行。
+            {
+                //溶液震动
+                //Debug.LogError("溶液");
+            },
+            0,
+            2
+            ).onComplete = () =>
+            {
+
+            };
+
+
+    }
+
     /// <summary>
     /// 模块之间切换
     /// </summary>
@@ -1034,7 +1213,7 @@ public class FireCtrl : MonoBehaviour
     Transform originPar;
     private void Awake()
     {
-        originPos = this.name=="huochai"?Vector3.zero:new Vector3(-0.262f,0,0);
+        originPos = this.name == "huochai" ? Vector3.zero : new Vector3(-0.262f, 0, 0);
         transform.localPosition = originPos;
         originPar = transform.parent;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -1042,10 +1221,10 @@ public class FireCtrl : MonoBehaviour
         ////curState = FireState.stay;
     }
     public void Reset()
-    {        
+    {
         transform.parent = originPar;
         transform.localPosition = originPos;
-        ParticleSystem[] ps= transform.GetComponentsInChildren<ParticleSystem>();
+        ParticleSystem[] ps = transform.GetComponentsInChildren<ParticleSystem>();
         for (int i = 0; i < ps.Length; i++)
         {
             ps[i].Stop();
@@ -1065,11 +1244,11 @@ public class FireCtrl : MonoBehaviour
         switch (pn)
         {
             case posNeg.right://负极
-                if (this.name=="huochai")
+                if (this.name == "huochai")
                 {
                     ParticleSystem[] ps = transform.GetComponentsInChildren<ParticleSystem>();
                     ps[0].Play();
-                    ps[1].Stop();                 
+                    ps[1].Stop();
                     ps[2].Stop();
                     //氢气点燃TODO    
                     CancelInvoke("FireH2");
@@ -1082,11 +1261,11 @@ public class FireCtrl : MonoBehaviour
                     for (int i = 0; i < ps.Length; i++)
                     {
                         ps[i].Stop();
-                    }                    
+                    }
                 }
                 break;
             case posNeg.left://正极
-                if (this.name=="huochai")//火柴燃烧更旺
+                if (this.name == "huochai")//火柴燃烧更旺
                 {
                     ParticleSystem psg = transform.Find("hx_hxyq_hxmt/guang").GetComponent<ParticleSystem>();
                     psg.Play();
@@ -1101,13 +1280,13 @@ public class FireCtrl : MonoBehaviour
                     Debug.Log(huo2.name);
                 }
                 else
-                {                    
+                {
                     //木柴复燃。
                     ParticleSystem[] ps = transform.GetComponentsInChildren<ParticleSystem>();
                     ps[1].transform.localPosition = new Vector3(0.0006f, 0.0157f, 0.00428f);
                     ps[1].transform.localRotation = Quaternion.Euler(Vector3.zero);
                     ps[0].Play();
-                    ps[1].Play();                    
+                    ps[1].Play();
                 }
                 break;
             case posNeg.middle:
@@ -1116,15 +1295,15 @@ public class FireCtrl : MonoBehaviour
                 break;
         }
     }
-    public void SetLeftRight(posNeg pn,Transform par)
+    public void SetLeftRight(posNeg pn, Transform par)
     {
         transform.SetParent(par);
         switch (pn)
         {
             case posNeg.right://负极
-               
+
                 transform.localPosition = new Vector3(0.054f, 0.46f, 0.01f);
-                transform.localRotation = Quaternion.Euler(0, 0, 140);                   
+                transform.localRotation = Quaternion.Euler(0, 0, 140);
                 break;
             case posNeg.left://正极
                 transform.localPosition = new Vector3(0.045f, 0.46f, 0.01f);
@@ -1137,7 +1316,7 @@ public class FireCtrl : MonoBehaviour
         }
         gameObject.GetBoxCollider().enabled = false;
         PlayEffect(pn);
-    }    
+    }
     void OnDestroy()
     {
         CancelInvoke();

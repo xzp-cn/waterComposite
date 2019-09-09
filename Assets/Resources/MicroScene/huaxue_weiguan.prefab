@@ -337,7 +337,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4302871977770308}
-  - component: {fileID: 111200362629431906}
   m_Layer: 0
   m_Name: huaxue_weiguan
   m_TagString: Untagged
@@ -3348,21 +3347,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!111 &111200362629431906
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1348485167362552}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 265ccd78021ac4b4f81f8995429b9838, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 265ccd78021ac4b4f81f8995429b9838, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!198 &198041737685442478
 ParticleSystem:
   m_ObjectHideFlags: 1

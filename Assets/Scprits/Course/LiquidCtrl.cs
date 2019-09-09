@@ -32,6 +32,8 @@ public class LiquidCtrl : MonoBehaviour
         }
     }
     Vector2 limit = new Vector2(0, 1);//最低点和最高点.
+
+
     public Vector2 Limit
     {
         get
@@ -65,9 +67,6 @@ public class LiquidCtrl : MonoBehaviour
             lv.smokeEnabled = false;
             lv.foamThickness = 0;
 
-            //c1 = c2 = new Color32(112, 170, 218, 255);
-            //lv.liquidColor1 = c1;
-            //lv.liquidColor2 = c2;
         }
 
     }
@@ -110,5 +109,21 @@ public class LiquidCtrl : MonoBehaviour
     {
         Level = 0;
         flow = false;
+    }
+
+    /// <summary>
+    /// 设置溶液波动
+    /// </summary>
+    public void SolutionVibration(float level = 0.7f, float freq = 1f, float speed = 0.6f, params float[] turb)
+    {
+        //设置溶液波动
+        Level = level;
+        lv.frecuency = freq;
+        lv.speed = speed;
+        if (turb.Length >= 2)
+        {
+            lv.turbulence1 = turb[0];
+            lv.turbulence2 = turb[1];
+        }
     }
 }
