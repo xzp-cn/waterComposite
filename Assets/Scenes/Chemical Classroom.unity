@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Script: {fileID: 556145652, guid: d172fc4acdcc9f04c903f2c1af310d96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAutoSlant: 0
-  ViewerScale: 8
+  isAutoSlant: 1
+  ViewerScale: 1
 --- !u!4 &412819187
 Transform:
   m_ObjectHideFlags: 0
@@ -1359,6 +1359,52 @@ Camera:
   m_PrefabParentObject: {fileID: 20693579693947420, guid: 2fc16410fad48c645b194e1846214e6c,
     type: 2}
   m_PrefabInternal: {fileID: 671194260}
+--- !u!1001 &1061942574
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.12992844
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.28393266
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.0000060145376
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707872661915730, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471207962050540, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+      propertyPath: m_Name
+      value: ' waterElectrolysis'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 5f42863508d00ef4b9d8772ea6ff4df3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!114 &1095738253 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114715200429455530, guid: 0b4a95c12354bdb40a0359b91ebda6f4,

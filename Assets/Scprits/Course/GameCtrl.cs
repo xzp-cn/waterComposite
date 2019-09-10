@@ -150,8 +150,9 @@ public class GameCtrl : MonoBehaviour
             pn.transform.SetAsFirstSibling();
             pn.transform.Find("pos").localPosition = new Vector3(-100, -358f, 0);
             pn.transform.Find("neg").localPosition = new Vector3(290, -360, 0);
+            posNeg = pn.transform;
         }
-
+        posNeg.gameObject.SetActive(true);
         //场景资源加载
         //3D     
         if (curScene == null)
@@ -250,6 +251,19 @@ public class GameCtrl : MonoBehaviour
             chemicalEquation.gameObject.SetActive(false);
         }
 
+        Transform pText = canvas.Find("panelText");
+        if (pText == null)
+        {
+            pText.gameObject.SetActive(true);
+        }
+        posNeg.gameObject.SetActive(false);
+
+        Transform micro_posNeg = canvas.Find("micro_posNeg");
+        if (micro_posNeg != null)
+        {
+            micro_posNeg.gameObject.SetActive(false);
+        }
+
         //火柴设置
         hcPar = tuopan.Find("hcPar");
         if (hcPar == null)
@@ -272,6 +286,14 @@ public class GameCtrl : MonoBehaviour
             obj.transform.localScale = scale;
             FireCtrl fCtrl = obj.GetScript<FireCtrl>();
         }
+
+        //
+        Transform h2oPar = root.Find("desk/shuidi/H2oPar");
+        if (h2oPar != null)
+        {
+            h2oPar.gameObject.SetActive(false);
+        }
+        //
         beakerAniOper.timePointEvent = null;
     }
     /// <summary>
@@ -349,6 +371,12 @@ public class GameCtrl : MonoBehaviour
         Transform btn = left.Find("UIButton (1)");
         btn.gameObject.SetActive(true);
         hcPar.gameObject.SetActive(false);
+
+        Transform chemical = transform.Find("chemical");
+        if (chemical != null)
+        {
+            chemical.gameObject.SetActive(true);
+        }
         //重置仪器
         //侧边按钮显示。
         Debug.Log("OnElectrolyteCallback:  " + "电解重置");
@@ -705,6 +733,13 @@ public class GameCtrl : MonoBehaviour
     {
         mFireNum = new FireNum(0);
         ResetInstruments();
+
+        Transform chemical = transform.Find("chemical");
+        if (chemical != null)
+        {
+            chemical.gameObject.SetActive(true);
+        }
+
         string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
             $"观察现象\n\u3000\u3000步骤2：分别用带火星的木条和点燃的火柴靠近负极玻璃管尖嘴处，打开活塞，观察现象" +
             $"\n\u3000\u3000实验后请归纳正负极气体性质";
@@ -970,7 +1005,7 @@ public class GameCtrl : MonoBehaviour
                 jiantouCtrl.Show(false);
                 SwitchOff(obj);
                 PrincleMoudleCreatebubble();//生成气泡
-                MicroScene();
+                BottomContainer();
             }
             return is3D;
         };
@@ -1022,30 +1057,33 @@ public class GameCtrl : MonoBehaviour
         left_velocity.z = leftbubbleSpeed;
         qipao_left.Play();
     }
-    //微小场景
-    void MicroScene()
+
+    //近距离观察溶液。
+    void BottomContainer()
     {
         UI.SetParent(MrSys.transform, false);
         //加载微观场景
 
         ParticleSystem ps_right = root.Find("desk/qipao_right").GetComponent<ParticleSystem>();
-        ps_right.Play();
         ParticleSystem.MainModule main = ps_right.main;
         main.startSpeed = 0.1f;
+        ps_right.Play();
+
         ParticleSystem ps_left = root.Find("desk/qipao_left").GetComponent<ParticleSystem>();
+        ParticleSystem.MainModule main_left = ps_left.main;
+        main_left.startSpeed = 0.1f;
         ps_left.Play();
 
-        LiquidCtrl lctl = root.Find("desk/shuidi").gameObject.GetScript<LiquidCtrl>();
-        lctl.SolutionVibration(0.68f, 1f, 0.66f, 0.4f, 0.3f, 0.5f);
         DOTween.To(
             () =>
             {
                 //相机拉近
-                Debug.LogError("camera");
-                MrSys.transform.DOLocalMove(new Vector3(0.24f, -2f, 5.5f), 2).onComplete = () =>
+                CreateH2O();
+                MrSys.transform.DOLocalMove(new Vector3(0.24f, -2f, 6f), 2).onComplete = () =>
                 {
-                    //
-                    Debug.LogError("complete");
+                    //溶液震动                    
+                    LiquidCtrl lctl = root.Find("desk/shuidi").gameObject.GetScript<LiquidCtrl>();
+                    lctl.SolutionVibration(0.68f, 1f, 0.66f, 0.4f, 0.3f, 0.5f);
                 };
                 return 1;
             },
@@ -1055,15 +1093,95 @@ public class GameCtrl : MonoBehaviour
                 //Debug.LogError("溶液");
             },
             0,
-            2
+            4
             ).onComplete = () =>
             {
+                //溶液震动                                   
+                MrSys.transform.localPosition = Vector3.zero;
 
+                //微观场景加载                
+                Transform weiguan = transform.Find("huaxue_weiguan");
+                if (weiguan == null)
+                {
+                    weiguan = ResManager.GetPrefab("MicroScene/huaxue_weiguan").transform;
+                    weiguan.SetParent(transform, true);
+                    curScene = weiguan.gameObject;
+                }
+                //主场景取消
+                Transform chemical = transform.Find("chemical");
+                if (chemical != null)
+                {
+                    chemical.gameObject.SetActive(false);
+                }
+                //ui隐藏
+                canvas.Find("chemicalEquation").gameObject.SetActive(false);
+                canvas.Find("equation").gameObject.SetActive(false);
+
+                canvas.Find("panelText").gameObject.SetActive(false);
+                canvas.Find("posNeg").gameObject.SetActive(false);
+
+                MicroScene();
             };
-
-
     }
 
+    /// <summary>
+    /// 生成水分子。
+    /// </summary>
+    void CreateH2O()
+    {
+        //生成水分子。
+        Transform microScene = transform.Find("huaxue_weiguan");
+        Transform h2oPar = root.Find("desk/shuidi/H2oPar");
+        if (h2oPar == null)
+        {
+            h2oPar = new GameObject("H2oPar").transform;
+            h2oPar.SetParent(root.Find("desk/shuidi"));
+            h2oPar.localPosition = Vector3.zero;
+            h2oPar.localScale = Vector3.one;
+            h2oPar.localRotation = Quaternion.Euler(Vector3.zero);
+        }
+        moveOfMolecular_ice mic = h2oPar.gameObject.GetScript<moveOfMolecular_ice>();
+        //
+    }
+
+    /// <summary>
+    /// 微场景操作
+    /// </summary>
+    void MicroScene()
+    {
+        Transform micro_posNeg = canvas.Find("micro_posNeg");
+        if (micro_posNeg == null)
+        {
+            micro_posNeg = ResManager.GetPrefab("SceneRes/posNeg").transform;
+            micro_posNeg.SetParent(canvas, false);
+            micro_posNeg.localPosition = new Vector3(-122, -689, 2.23f);
+            micro_posNeg.Find("pos").localPosition = new Vector3(-273, 0, 0);
+            micro_posNeg.Find("neg").localPosition = new Vector3(460, 0, 0);
+        }
+        micro_posNeg.gameObject.SetActive(true);
+        //播动画      
+        Transform weiguan = root.Find("huaxue_weiguan");
+        GameObject h2oElec = ResManager.GetPrefab("MicroScene/h2o");//水电解生成
+        h2oElec.transform.SetParent(weiguan);
+        weiguan.transform.localPosition = new Vector3(0, 0, 0);
+        AnimationOper aop = h2oElec.GetAnimatorOper();
+        aop.Complete += () =>
+          {
+              //返回主界面控制容器中液体高度               
+              BackToMain();
+          };
+        aop.PlayForward("hx_hxyq_fz_1");
+    }
+
+    void BackToMain()
+    {
+        GameObject chemical = transform.Find("chemical").gameObject;
+        chemical.SetActive(true);
+
+        Transform micro = transform.Find("huaxue_weiguan");
+        micro.gameObject.SetActive(false);
+
+    }
     /// <summary>
     /// 模块之间切换
     /// </summary>
@@ -1118,7 +1236,6 @@ public enum FireEnum
     huochai,//火柴
     mutiao,//木条
 }
-
 
 public class JiantouCtrl : MonoBehaviour
 {
@@ -1335,3 +1452,6 @@ public enum posNeg
     middle,//中间水管
     //shaobei //烧杯水流控制。
 }
+
+
+//ui需要单独处理。
