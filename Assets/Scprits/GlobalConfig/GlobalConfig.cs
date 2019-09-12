@@ -71,12 +71,12 @@ namespace liu
         /// <summary>
         /// 单例
         /// </summary>
-        public static GlobalConfig Instance = new GlobalConfig();
+        public static GlobalConfig Instance = null;
 
         [HideInInspector]
         public string versionNO;
 
-        private GlobalConfig()
+        private void Awake()
         {
             Instance = this;
         }

@@ -12,8 +12,7 @@ public class moveOfMolecular_ice : MonoBehaviour
     //Tween tween;
     ////保存所有自身旋转方向的组合（上下左右）
     Vector3[] molecularGroupRotateGrouop;
-    ////每个无规则运动的分子的随机的自身旋转方向
-    Vector3[] tempAxis;
+    ////每个无规则运动的分子的随机的自身旋转方向  
     /// <summary>
     /// 移动的方向
     /// </summary>
@@ -28,7 +27,7 @@ public class moveOfMolecular_ice : MonoBehaviour
         }
         gameObjects = new GameObject[objNum];
         tweens = new Tween[gameObjects.Length];
-        tempAxis = new Vector3[gameObjects.Length];
+        Vector3[] tempAxis = new Vector3[gameObjects.Length];
         Random.InitState((int)Time.realtimeSinceStartup);
         for (int i = 0; i < gameObjects.Length; i++)
         {

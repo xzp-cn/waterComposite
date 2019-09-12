@@ -23,7 +23,6 @@ namespace FSpace
         public bool enableShake = true;
 
 
-
         Camera camera2D;
         void Start()
         {
@@ -66,12 +65,17 @@ namespace FSpace
             return null;
         }
 
-
+        bool is3DMove = false;
         /// <summary>
         /// 3D 拖拽或者移动
         /// </summary>
         private void OnKey0Down()
         {
+            if (!canDrag)
+            {
+                return;
+            }
+
             RaycastHit raycastHit;
             GameObject dragObj = Raycast(out raycastHit);
 
@@ -81,11 +85,11 @@ namespace FSpace
                 {
                     _curDragObj = dragObj;
 
-                    bool isClick = false;
+                    //3d物体点击事件
                     if (ClickAction != null)
                     {
-                        isClick = ClickAction(dragObj);
-                        if (isClick)
+                        bool isClick3DObj = ClickAction(dragObj);
+                        if (isClick3DObj)
                         {
                             return;
                         }
@@ -93,8 +97,13 @@ namespace FSpace
 
                     if (GlobalConfig.Instance.operationModel == OperationModel.Move)//移动物体
                     {
-
-                        //添加抓取的物体
+                        if (dragObj.layer != LayerMask.NameToLayer("Default"))
+                        {
+                            return;
+                        }
+                        //添加抓取的物体     
+                        is3DMove = true;
+                        //Debug.LogError(_curDragObj.name);
                         FCore.addDragObj(_curDragObj, raycastHit.distance, true);
                     }
                     else if (GlobalConfig.Instance.operationModel == OperationModel.Rotate)//旋转物体
@@ -115,6 +124,7 @@ namespace FSpace
 
         public void OnKey0Up()
         {
+            is3DMove = false;
             //移出抓取的物体
             FCore.deleteDragObj(_curDragObj);
 
@@ -138,6 +148,19 @@ namespace FSpace
                     OnMouseBtnUp();
                 }
             }
+            else
+            {
+                if (is3DMove)//3D拖拽状态
+                {
+                    RaycastHit raycastHit;
+                    GameObject hitObj = Raycast(out raycastHit);
+                    if (hitObj != null && hitObj.layer == 11)
+                    {
+                        FCore.deleteDragObj(_curDragObj);
+                        DragCallback?.Invoke(_curDragObj.transform, hitObj.transform);
+                    }
+                }
+            }
         }
 
         void OnMouseBtnUp()
@@ -154,7 +177,7 @@ namespace FSpace
         /// <summary>
         /// 物体拖拽，拖拽物体，射线打中物体
         /// </summary>
-        public System.Action<xuexue.common.drag2dtool.DragRecord, Transform> DragCallback;
+        public System.Action<Transform, Transform> DragCallback;
         public bool canDrag = true; //控制物体是否可以拖拽
         void Drag2DObj()
         {
@@ -192,9 +215,7 @@ namespace FSpace
 
                 if (GlobalConfig.Instance.operationModel == OperationModel.Move)
                 {
-                    Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
                     xuexue.common.drag2dtool.DragRecord dr = Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
-
                     dr.SetOnMouseMove(DragCall, 0);
                 }
                 else if (GlobalConfig.Instance.operationModel == OperationModel.Rotate)
@@ -225,7 +246,8 @@ namespace FSpace
                 {
                     return;
                 }
-                DragCallback?.Invoke(record, raycastHit.transform);//当前拖拽物体和射线打中物体
+                xuexue.common.drag2dtool.Drag2DTool.Instance.deleteDragObj(record.dragObj.gameObject);
+                DragCallback?.Invoke(record.dragObj, raycastHit.transform);//当前拖拽物体和射线打中物体
             }
         }
     }

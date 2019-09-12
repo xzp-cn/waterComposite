@@ -69,7 +69,7 @@ public class AnimationOper : MonoBehaviour
     float currLength;
     public float transitionTime = 0f;//过渡时间   
     int lastFrame = -1, curFrame = -1;
-    bool isPlaying = false;
+    //bool isPlaying = false;
     /// <summary>
     /// 从头开始播放动画剪辑
     /// </summary>
@@ -180,8 +180,9 @@ public class AnimationOper : MonoBehaviour
 
     private void OnDisable()
     {
-        anim.Update(0);
-        anim.Rebind();
+
+        //anim.Update(0);
+        //anim.Rebind();
     }
     void OnDestroy()
     {

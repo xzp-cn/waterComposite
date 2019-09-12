@@ -20,6 +20,7 @@ public class TextCtrl : MonoBehaviour
     /// <param name="textStr"></param>
     public void SetText(string textStr)
     {
+        gameObject.SetActive(true);
         text.text = textStr;
         text.text.Replace("\\n", "\n");
     }

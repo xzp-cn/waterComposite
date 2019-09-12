@@ -77,7 +77,67 @@ ModelImporter:
     4300018: h5
     4300020: d1
     4300022: d2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BG
+    second: {fileID: 2100000, guid: c66a8c3b11adacf4e98161b16dcec563, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: a1
+    second: {fileID: 2100000, guid: 852acb47e5032544385e2056bb0dc0b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: a2
+    second: {fileID: 2100000, guid: 5eb2a833690460342a821127d443d5cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: a3
+    second: {fileID: 2100000, guid: 4534faca83f961c418a092053728729c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: a5
+    second: {fileID: 2100000, guid: 2773b9165bd63cc4c9d70e611e568744, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: a6
+    second: {fileID: 2100000, guid: 0ac14dcc6cbf0a343b2731d5eaa6ad56, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: b01
+    second: {fileID: 2100000, guid: 39c766204063e8c4e9dd42d45d1dbb8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: b02
+    second: {fileID: 2100000, guid: 752e80e02cf19af42b9be678c7cb83a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: b03
+    second: {fileID: 2100000, guid: e904efaad33cb3c43b5431fd47d80a7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: c1
+    second: {fileID: 2100000, guid: ce0e18d20def1b04d9ce8ddaa4e0edc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jiefeng
+    second: {fileID: 2100000, guid: 447a154e9fd108e45aaacebb7290da65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yuan
+    second: {fileID: 2100000, guid: 18be1805717a89b419d83a64c80ed194, type: 2}
   materials:
     importMaterials: 1
     materialName: 1
@@ -113,8 +173,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

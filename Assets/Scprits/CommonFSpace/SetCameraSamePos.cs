@@ -1,7 +1,4 @@
-﻿using FSpace;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// 用来调整 VRCamera 和 ARCamera 看到的画面与 Camera2D一致
@@ -17,14 +14,5 @@ public class SetCameraSamePos : MonoBehaviour
     private void OnEnable()
     {
         ARCamera.position = VRCamera.position = Camera2D.position;
-
-        ScreenCamera3D temp3D;
-        temp3D = ARCamera.GetComponent<ScreenCamera3D>();
-        if (temp3D)
-            ARCamera.GetComponent<ScreenCamera3D>().enabled = true;
-
-        temp3D = VRCamera.GetComponent<ScreenCamera3D>();
-        if (temp3D)
-            VRCamera.GetComponent<ScreenCamera3D>().enabled = true;
     }
 }

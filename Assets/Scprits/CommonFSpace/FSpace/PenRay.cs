@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using FSpace;
+﻿using FSpace;
+using UnityEngine;
 /// <summary>
 /// 绘制一条从笔尖发出的射线
 /// </summary>
@@ -36,7 +36,7 @@ public class PenRay : MonoBehaviour
     /// <summary>
     /// 点击显示文字
     /// </summary>
-    private GameObject TextGo = null;
+    //private GameObject TextGo = null;
 
 
     private void Awake()

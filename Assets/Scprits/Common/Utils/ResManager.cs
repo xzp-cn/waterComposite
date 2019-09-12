@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class ResManager
 {
@@ -10,9 +7,10 @@ public class ResManager
     /// </summary>
     /// <param name="UIPath"></param>
     /// <param name="spriteName"></param>
-    /// <returns></returns>
+    /// <returns></returns>    
     public static Sprite GetSprite(string path)
     {
+
         Sprite sp = null;
         try
         {
