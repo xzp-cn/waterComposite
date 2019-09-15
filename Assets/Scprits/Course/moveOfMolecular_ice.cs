@@ -18,7 +18,7 @@ public class moveOfMolecular_ice : MonoBehaviour
     /// </summary>
     Vector3 moveDir;
     float delayTime = 3f;
-    public int objNum = 40;
+    public int objNum = 60;
     private void Start()
     {
         if (PrefabMolecular == null)

@@ -131,7 +131,7 @@ public class GameCtrl : MonoBehaviour
             left.Find(leftBtns[i]).gameObject.SetActive(false);
         }
         Toggle[] togs = left.Find(leftBtns[1]).GetComponentsInChildren<Toggle>();
-        string[] togNames = new string[] { "蒸馏水", "滴加氢氧化\n钠的蒸馏水" };
+        string[] togNames = new string[] { "蒸馏水", "滴加氢氧化钠\n的蒸馏水" };
         for (int i = 0; i < togs.Length; i++)
         {
             Text txt = togs[i].transform.Find("Label").GetComponent<Text>();
@@ -239,12 +239,13 @@ public class GameCtrl : MonoBehaviour
         if (naoh == null)
         {
             TextCtrl naoh_text = new GameObject("naoh").GetScript<TextCtrl>();
-            naoh_text.SetText("NAOH溶液");
+            naoh_text.SetText("NaOH溶液");
             naoh_text.transform.SetParent(canvas, false);
             naoh_text.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 100);
             naoh_text.transform.localPosition = new Vector3(-524f, -483f, 2.661f);
             naoh_text.transform.SetAsFirstSibling();
         }
+        
         //黑板ui重置
         Transform equ = canvas.Find("equation");
         if (equ != null)
@@ -269,6 +270,24 @@ public class GameCtrl : MonoBehaviour
         if (micro_posNeg != null)
         {
             micro_posNeg.gameObject.SetActive(false);
+        }
+
+        Transform huochai = canvas.Find("huochai");
+        if (huochai != null)
+        {
+            huochai.gameObject.SetActive(false);
+        }
+
+        Transform mutiao = canvas.Find("mutiao");
+        if (mutiao != null)
+        {
+            mutiao.gameObject.SetActive(false);
+        }
+
+        Transform switchOff = canvas.Find("switchOff");
+        if (switchOff != null)
+        {
+            switchOff.gameObject.SetActive(false);
         }
         //课件名称显示
         canvas.Find("Top/Image/Text").GetComponent<Text>().text = "水的组成";
@@ -384,7 +403,7 @@ public class GameCtrl : MonoBehaviour
             OnElectrolyteCallback();
         }
     }
-    void OnElectrolyteCallback()
+    void OnElectrolyteCallback(bool isWater=true)
     {
         ResetInstruments();
         string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：往电解器玻璃管里注满蒸馏水，打开“通电”开关，" +
@@ -401,7 +420,15 @@ public class GameCtrl : MonoBehaviour
             chemical.gameObject.SetActive(true);
         }
         //重置仪器
-        WaterDefault();
+        if(isWater)
+        {
+            WaterDefault();
+        }          
+        Transform pn= canvas.Find("posNeg");
+        if (pn!=null)
+        {
+            pn.gameObject.SetActive(true);
+        }
         //侧边按钮显示。
         Debug.Log("OnElectrolyteCallback:  " + "电解重置");
     }
@@ -410,7 +437,7 @@ public class GameCtrl : MonoBehaviour
     /// </summary>
     void WaterMoudle()
     {
-        OnElectrolyteCallback();
+        OnElectrolyteCallback(true);
     }
     void WaterDefault()
     {
@@ -429,10 +456,10 @@ public class GameCtrl : MonoBehaviour
         UI.Find("InprojectionIgnoreCanvas/water").gameObject.SetActive(true);
         UI.Find("InprojectionIgnoreCanvas/naoh").gameObject.SetActive(false);
 
-        leftbubbleSpeed = 0.18f;
-        rightbubbleSpeed = 0.15f;
-        leftTriggerSpeed = 0.013f;
-        rightTriggerSpeed = 0.002f;
+        leftbubbleSpeed = 0.15f;
+        rightbubbleSpeed = 0.18f;
+        leftTriggerSpeed = 0.002f;
+        rightTriggerSpeed = 0.013f;
 
         PlayMoudleAnimation("water");
     }
@@ -441,7 +468,7 @@ public class GameCtrl : MonoBehaviour
     /// </summary>
     void NaohMoudle()
     {
-        OnElectrolyteCallback();
+        OnElectrolyteCallback(false);
 
         isNaoh = true;
 
@@ -457,10 +484,10 @@ public class GameCtrl : MonoBehaviour
         naohUI.localPosition = new Vector3(-307f, -483f, 2.661f);
         naohUI.gameObject.SetActive(true);
 
-        leftbubbleSpeed = 0.18f * 1.1f;
-        rightbubbleSpeed = 0.15f * 1.1f;
-        leftTriggerSpeed = 0.014f * 1.1f;
-        rightTriggerSpeed = 0.002f * 1.1f;
+        leftbubbleSpeed = 0.15f * 1.3f;
+        rightbubbleSpeed = 0.18f * 1.3f;
+        leftTriggerSpeed = 0.002f * 1.3f;
+        rightTriggerSpeed = 0.014f * 1.3f;
         PlayMoudleAnimation("naoh");
     }
     /// <summary>
@@ -488,7 +515,7 @@ public class GameCtrl : MonoBehaviour
             bool is3D = false;
             if (clickObj.name == "bolibang")
             {
-                jiantouCtrl.SetJiantou(new Vector3(0.0202f, -0.02145f, -0.07002f));
+                jiantouCtrl.SetJiantou(new Vector3(0.0156f, -0.0127f, -0.0756f));
                 is3D = true;
                 root.Find("desk/tuopan/bolibang").gameObject.SetActive(false);
                 root.Find("desk/pour/hx_hxyq_blb").gameObject.SetActive(true);
@@ -640,7 +667,7 @@ public class GameCtrl : MonoBehaviour
     /// </summary>    
     void Createbubble(bool isFinish = true)
     {
-        MrSys.transform.DOLocalMove(new Vector3(0, -1.5f, 5), 2f).onComplete = () =>
+        MrSys.transform.DOLocalMove(new Vector3(0.45f, -1.5f, 5), 2f).onComplete = () =>
         {
             //MrSys.transform.DOLocalMove(new Vector3(0, -1, 4), 2);
         };
@@ -689,14 +716,40 @@ public class GameCtrl : MonoBehaviour
         qipao_left.Play();
 
         //正极水柱水流控制       
-        FlowWater(posNeg.left, LiquidCtrl.flowDirection.down, 0.02f, new Vector2(0.6f, 0.94f), 0.94f);
+        FlowWater(posNeg.left, LiquidCtrl.flowDirection.down, 0.02f, new Vector2(0.75f, 0.94f), 0.94f);
         //负极水流控制
-        FlowWater(posNeg.right, LiquidCtrl.flowDirection.down, 0.01f, new Vector2(0.75f, 0.94f), 0.94f);
+        FlowWater(posNeg.right, LiquidCtrl.flowDirection.down, 0.01f, new Vector2(0.6f, 0.94f), 0.94f);
         //正极气泡trigger控制
         bLeft.SetFlow(BubbleCtrl.flowDirection.down, leftTriggerSpeed, 0.07f);
         //负极气泡trigger控制
         bRight.SetFlow(BubbleCtrl.flowDirection.down, rightTriggerSpeed, 0.1665f);
-        //点解结束气泡停止     
+        //点解结束气泡停止  
+        ///关闭开关提示
+        DOTween.To(
+          () => { return 0; },
+          (a) =>
+          {                                   
+          },
+          1,
+          2
+      ).onComplete = () => {
+          Transform switchOff = canvas.Find("switchOff");
+          if (switchOff != null)
+          {
+              switchOff.gameObject.SetActive(true);
+          }
+          else
+          {
+              TextCtrl huochai_text = new GameObject("switchOff").GetScript<TextCtrl>();
+              huochai_text.SetText("开关关闭");
+              huochai_text.transform.SetParent(canvas, false);
+              huochai_text.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 100);
+              huochai_text.transform.localPosition = new Vector3(818, -489.7f, 1.565f);
+              huochai_text.transform.SetAsFirstSibling();
+          }
+          GameObject obj = root.Find("desk/pour/hx_hxyq_sdjq/switchoff").gameObject;
+          SwitchOff(obj);
+      };
 
         if (isFinish)
         {
@@ -735,14 +788,15 @@ public class GameCtrl : MonoBehaviour
             RectTransform rt = new GameObject("naohText").AddComponent<RectTransform>();
             rt.SetAsFirstSibling();
             rt.SetParent(canvas);
-            rt.sizeDelta = new Vector2(550, 120);
+            rt.sizeDelta = new Vector2(1000, 300);
             rt.anchoredPosition3D = new Vector3(0, 157.8f, -2.517f);
             rt.localScale = Vector3.one;
             Text txt = rt.gameObject.AddComponent<Text>();
             txt.font = Font.CreateDynamicFontFromOSFont("Arial", 34);
             txt.text = "与单独电解纯净蒸馏水有何不同？说明什么?";
-            txt.fontSize = 34;
+            txt.fontSize = 60;
             //
+            rt.DOLocalMove(new Vector3(-93, -140, 6.54f),0.5f);
         }
         MrSys.transform.DOLocalMove(Vector3.zero, 2);
     }
@@ -788,6 +842,35 @@ public class GameCtrl : MonoBehaviour
         if (waterUI)
         {
             waterUI.gameObject.SetActive(false);
+        }
+
+        Transform huochai = canvas.Find("huochai");
+        if (huochai!=null)
+        {
+            huochai.gameObject.SetActive(true);
+        }
+        else
+        {
+            TextCtrl huochai_text = new GameObject("huochai").GetScript<TextCtrl>();
+            huochai_text.SetText("火柴");
+            huochai_text.transform.SetParent(canvas, false);
+            huochai_text.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 100);
+            huochai_text.transform.localPosition = new Vector3(-307f, -483f, 2.027f);
+            huochai_text.transform.SetAsFirstSibling();
+        }
+        Transform mutiao = canvas.Find("mutiao");
+        if (mutiao!=null)
+        {
+            mutiao.gameObject.SetActive(true);
+        }
+        else
+        {
+            TextCtrl mutiao_text = new GameObject("mutiao").GetScript<TextCtrl>();
+            mutiao_text.SetText("木条");
+            mutiao_text.transform.SetParent(canvas, false);
+            mutiao_text.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 100);
+            mutiao_text.transform.localPosition = new Vector3(-573f, -483f, 2.027f);
+            mutiao_text.transform.SetAsFirstSibling();
         }
 
         Transform sqPar = root.Find("desk/pour/hx_hxyq_sdjq/hx_hxyq_sdjq 1");
@@ -912,7 +995,9 @@ public class GameCtrl : MonoBehaviour
         if (count > 0)
         {
             Transform tr = boxTr.GetChild(0);
-            //Destroy(tr.gameObject);
+            //tr.gameObject.SetActive(false);
+            FireCtrl _fctrl= tr.GetComponent<FireCtrl>();
+            _fctrl.Reset();
         }
 
         //当前拖拽物体设置到仪器上。
@@ -929,7 +1014,7 @@ public class GameCtrl : MonoBehaviour
         //float t = 0;
 
         DOTween.To(
-            () => { Tweener tw = MrSys.transform.DOLocalMove(new Vector3(0.2f, 0, 5), 0.5f); return tw.Delay(); },
+            () => { return 0; /*Tweener tw = MrSys.transform.DOLocalMove(new Vector3(0.2f, 0, 5), 0.5f); return tw.Delay(); */},
             (a) =>
             {
                 Transform _niu = pn == posNeg.left ? niuLeft : niuRight;
@@ -942,8 +1027,8 @@ public class GameCtrl : MonoBehaviour
         {
             MrSys.transform.DOLocalMove(Vector3.zero, 2).onComplete = () =>
               {
-                  niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
-                  niuLeft.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                  //niuRight.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+                  //niuLeft.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
                   if (mFireNum.AllOver())
                   {
                       string str = $"\n\u3000\u3000步骤:\n\u3000\u3000步骤1：分别用带火星的木条和点燃的火柴靠近正极玻璃管尖嘴处，打开活塞，" +
@@ -1036,10 +1121,9 @@ public class GameCtrl : MonoBehaviour
         {
             jiantouCtrl = ResManager.GetPrefab("SceneRes/jiantou").GetScript<JiantouCtrl>();
         }
-        jiantouCtrl.SetJiantou(new Vector3(0.0128f, -0.0076f, -0.0303f));
+        jiantouCtrl.SetJiantou(new Vector3(-0.0207f, -0.0178f, -0.063f));
 
-        //电源按钮点击
-        jiantouCtrl.SetJiantou(new Vector3(-0.0029f, 0.0018f, 0));
+        //电源按钮点击        
         GlobalConfig.Instance.operationModel = OperationModel.Stay;
         simpleDrag.canDrag = true;
         simpleDrag.ClickAction = (obj) =>
@@ -1127,7 +1211,7 @@ public class GameCtrl : MonoBehaviour
             () =>
             {
                 //相机拉近
-                MrSys.transform.DOLocalMove(new Vector3(0.24f, -2f, 6f), 2).onComplete = () =>
+                MrSys.transform.DOLocalMove(new Vector3(0.55f, -1.52f, 5f), 2).onComplete = () =>
                 {
                     //溶液震动                    
                     LiquidCtrl lctl = root.Find("desk/shuidi").gameObject.GetScript<LiquidCtrl>();
@@ -1233,6 +1317,8 @@ public class GameCtrl : MonoBehaviour
               };
 
           };
+
+        aop.SetAnimSpeed(0.8f);
         aop.OnPause();
         DOTween.To(
             () => { return 1; },
@@ -1483,12 +1569,13 @@ public class FireCtrl : MonoBehaviour
 {
     Vector3 originPos;
     Transform originPar;
+    Quaternion originQt;
     private void Awake()
     {
         originPos = transform.localPosition;
         originPar = transform.parent;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
-
+        originQt = transform.localRotation;
         //mPn = posNeg.middle;
         ////curState = FireState.stay;
     }
@@ -1502,8 +1589,11 @@ public class FireCtrl : MonoBehaviour
     }
     public void Reset()
     {
+        gameObject.SetActive(false);
+        gameObject.SetActive(true);
         transform.parent = originPar;
         transform.localPosition = originPos;
+        transform.localRotation = originQt;
         ParticleSystem[] ps = transform.GetComponentsInChildren<ParticleSystem>();
         for (int i = 0; i < ps.Length; i++)
         {
@@ -1514,6 +1604,7 @@ public class FireCtrl : MonoBehaviour
         {
             transform.Find("hx_hxyq_hxmt/huo1").GetComponent<ParticleSystem>().Play();
         }
+        gameObject.GetBoxCollider().enabled = true;
     }
     void FireH2()
     {
