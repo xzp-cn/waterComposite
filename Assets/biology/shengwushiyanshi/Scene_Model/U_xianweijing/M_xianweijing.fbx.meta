@@ -1,0 +1,238 @@
+fileFormatVersion: 2
+guid: 7984e50380e6c4e438d50829382db5cf
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: M_xianweijing_czjlx_l
+    100004: M_xianweijing_czjlx_r
+    100006: M_xianweijing_dizuo
+    100008: M_xianweijing_fangguangjing
+    100010: M_xianweijing_jingshen
+    100012: M_xianweijing_jingshen 1
+    100014: M_xianweijing_mujing
+    100016: M_xianweijing_mujing1
+    100018: M_xianweijing_wujing_10x
+    100020: M_xianweijing_wujing_40x
+    100022: M_xianweijing_wujing_4x
+    100024: M_xianweijing_xzjlx_l
+    100026: M_xianweijing_xzjlx_r
+    100028: M_xianweijing_yapian_l
+    100030: M_xianweijing_yapian_r
+    100032: M_xianweijing_zaiwutai
+    100034: M_xianweijing_zheguangqi
+    100036: M_xianweijing_zhuanhuanpan
+    100038: M_xianweijing_zhuanhuanqi
+    100040: M_xianweijing_zjlx
+    100042: M_xianweijing_zwt1
+    100044: sw_swjj_xwj_czjlx
+    100046: sw_swjj_xwj_fgj
+    100048: sw_swjj_xwj_jb
+    100050: sw_swjj_xwj_jt
+    100052: sw_swjj_xwj_jz
+    100054: sw_swjj_xwj_mj
+    100056: sw_swjj_xwj_tgk
+    100058: sw_swjj_xwj_wj
+    100060: sw_swjj_xwj_xzjlx
+    100062: sw_swjj_xwj_ypj
+    100064: sw_swjj_xwj_zgq
+    100066: sw_swjj_xwj_zhq
+    100068: sw_swjj_xwj_zwt
+    400000: //RootNode
+    400002: M_xianweijing_czjlx_l
+    400004: M_xianweijing_czjlx_r
+    400006: M_xianweijing_dizuo
+    400008: M_xianweijing_fangguangjing
+    400010: M_xianweijing_jingshen
+    400012: M_xianweijing_jingshen 1
+    400014: M_xianweijing_mujing
+    400016: M_xianweijing_mujing1
+    400018: M_xianweijing_wujing_10x
+    400020: M_xianweijing_wujing_40x
+    400022: M_xianweijing_wujing_4x
+    400024: M_xianweijing_xzjlx_l
+    400026: M_xianweijing_xzjlx_r
+    400028: M_xianweijing_yapian_l
+    400030: M_xianweijing_yapian_r
+    400032: M_xianweijing_zaiwutai
+    400034: M_xianweijing_zheguangqi
+    400036: M_xianweijing_zhuanhuanpan
+    400038: M_xianweijing_zhuanhuanqi
+    400040: M_xianweijing_zjlx
+    400042: M_xianweijing_zwt1
+    400044: sw_swjj_xwj_czjlx
+    400046: sw_swjj_xwj_fgj
+    400048: sw_swjj_xwj_jb
+    400050: sw_swjj_xwj_jt
+    400052: sw_swjj_xwj_jz
+    400054: sw_swjj_xwj_mj
+    400056: sw_swjj_xwj_tgk
+    400058: sw_swjj_xwj_wj
+    400060: sw_swjj_xwj_xzjlx
+    400062: sw_swjj_xwj_ypj
+    400064: sw_swjj_xwj_zgq
+    400066: sw_swjj_xwj_zhq
+    400068: sw_swjj_xwj_zwt
+    2100000: T_xianweijing_1
+    2100002: T_xianweijing_3
+    2100004: T_xianweijing_5
+    2100006: T_xianweijing_2
+    2100008: T_xianweijing_4
+    2100010: T_xianweijing_1_1
+    2300000: M_xianweijing_czjlx_l
+    2300002: M_xianweijing_czjlx_r
+    2300004: M_xianweijing_dizuo
+    2300006: M_xianweijing_fangguangjing
+    2300008: M_xianweijing_jingshen 1
+    2300010: M_xianweijing_mujing
+    2300012: M_xianweijing_mujing1
+    2300014: M_xianweijing_wujing_10x
+    2300016: M_xianweijing_wujing_40x
+    2300018: M_xianweijing_wujing_4x
+    2300020: M_xianweijing_xzjlx_l
+    2300022: M_xianweijing_xzjlx_r
+    2300024: M_xianweijing_yapian_l
+    2300026: M_xianweijing_yapian_r
+    2300028: M_xianweijing_zheguangqi
+    2300030: M_xianweijing_zhuanhuanpan
+    2300032: M_xianweijing_zwt1
+    3300000: M_xianweijing_czjlx_l
+    3300002: M_xianweijing_czjlx_r
+    3300004: M_xianweijing_dizuo
+    3300006: M_xianweijing_fangguangjing
+    3300008: M_xianweijing_jingshen 1
+    3300010: M_xianweijing_mujing
+    3300012: M_xianweijing_mujing1
+    3300014: M_xianweijing_wujing_10x
+    3300016: M_xianweijing_wujing_40x
+    3300018: M_xianweijing_wujing_4x
+    3300020: M_xianweijing_xzjlx_l
+    3300022: M_xianweijing_xzjlx_r
+    3300024: M_xianweijing_yapian_l
+    3300026: M_xianweijing_yapian_r
+    3300028: M_xianweijing_zheguangqi
+    3300030: M_xianweijing_zhuanhuanpan
+    3300032: M_xianweijing_zwt1
+    4300000: M_xianweijing_mujing
+    4300002: M_xianweijing_fangguangjing
+    4300004: M_xianweijing_jingshen
+    4300006: M_xianweijing_zheguangqi
+    4300008: M_xianweijing_zwt1
+    4300010: M_xianweijing_yapian_r
+    4300012: M_xianweijing_yapian_l
+    4300014: M_xianweijing_wujing_10x
+    4300016: M_xianweijing_wujing_40x
+    4300018: M_xianweijing_zhuanhuanpan
+    4300020: M_xianweijing_wujing_4x
+    4300022: M_xianweijing_czjlx_l
+    4300024: M_xianweijing_czjlx_r
+    4300026: M_xianweijing_xzjlx_l
+    4300028: M_xianweijing_xzjlx_r
+    4300030: M_xianweijing_mujing1
+    4300032: M_xianweijing_dizuo
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_xianweijing_1
+    second: {fileID: 2100000, guid: aa1f3ea82cb5a30498a5499444e0bb84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_xianweijing_2
+    second: {fileID: 2100000, guid: e0e6c18029df3174c94448934efae613, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_xianweijing_3
+    second: {fileID: 2100000, guid: 14afa9a7e2cb367488c6e596546be34b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_xianweijing_4
+    second: {fileID: 2100000, guid: cf7f88f6943b3ef42b76effcd35bc552, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: T_xianweijing_5
+    second: {fileID: 2100000, guid: 0f6c445d9cab8ff43bd8e37f707aeca0, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

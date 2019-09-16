@@ -1,0 +1,345 @@
+fileFormatVersion: 2
+guid: cc12a36bb9015f449ad858565cd1252e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: boli
+    100002: boli 1
+    100004: boli2
+    100006: bolitu1
+    100008: bolitu2
+    100010: door_mhq_zst
+    100012: //RootNode
+    100014: miehuoqi
+    100016: O_swsys_3_1_polySurface1
+    100018: O_swsys_3_5_polySurface1
+    100020: O_swsys_3_6_polySurface1
+    100022: pm_zz
+    100024: polySurface102
+    100026: polySurface103
+    100028: polySurface104
+    100030: polySurface111
+    100032: polySurface112
+    100034: polySurface13
+    100036: polySurface92
+    100038: polySurface93
+    100040: pPlane2
+    100042: pPlane3
+    100044: pPlane4
+    100046: pPlane5
+    100048: qiang1
+    100050: qx
+    100052: polySurface113
+    100054: polySurface114
+    100056: polySurface115
+    100058: swsys
+    100060: transform1
+    100062: transform2
+    100064: polySurface116
+    100066: polySurface117
+    400000: boli
+    400002: boli 1
+    400004: boli2
+    400006: bolitu1
+    400008: bolitu2
+    400010: door_mhq_zst
+    400012: //RootNode
+    400014: miehuoqi
+    400016: O_swsys_3_1_polySurface1
+    400018: O_swsys_3_5_polySurface1
+    400020: O_swsys_3_6_polySurface1
+    400022: pm_zz
+    400024: polySurface102
+    400026: polySurface103
+    400028: polySurface104
+    400030: polySurface111
+    400032: polySurface112
+    400034: polySurface13
+    400036: polySurface92
+    400038: polySurface93
+    400040: pPlane2
+    400042: pPlane3
+    400044: pPlane4
+    400046: pPlane5
+    400048: qiang1
+    400050: qx
+    400052: polySurface113
+    400054: polySurface114
+    400056: polySurface115
+    400058: swsys
+    400060: transform1
+    400062: transform2
+    400064: polySurface116
+    400066: polySurface117
+    2100000: M_wq
+    2100002: M_nq
+    2100004: M_xianshi
+    2100006: M_xianshi2
+    2100008: M_boli
+    2100010: M_miehuoqi7
+    2100012: M_miehuoqi2
+    2100014: M_miehuoqi1
+    2100016: M_miehuoqi3
+    2100018: M_miehuoqi4
+    2100020: M_miehuoqi5
+    2100022: M_miehuoqi6
+    2100024: M_zhuozipingmu
+    2100026: M_zhuanghuanqi_2
+    2100028: M_zhuanghuanqi_1
+    2100030: M_menmiehuoqi
+    2100032: M_menmiehuoqi2
+    2100034: DNA
+    2100036: lambert1
+    2300000: boli 1
+    2300002: boli2
+    2300004: bolitu1
+    2300006: bolitu2
+    2300008: miehuoqi
+    2300010: O_swsys_3_1_polySurface1
+    2300012: O_swsys_3_5_polySurface1
+    2300014: O_swsys_3_6_polySurface1
+    2300016: polySurface102
+    2300018: polySurface103
+    2300020: polySurface104
+    2300022: polySurface111
+    2300024: polySurface112
+    2300026: polySurface13
+    2300028: polySurface92
+    2300030: polySurface93
+    2300032: pPlane2
+    2300034: pPlane3
+    2300036: pPlane4
+    2300038: pPlane5
+    2300040: qiang1
+    2300042: polySurface115
+    2300044: polySurface116
+    2300046: polySurface117
+    3300000: boli 1
+    3300002: boli2
+    3300004: bolitu1
+    3300006: bolitu2
+    3300008: miehuoqi
+    3300010: O_swsys_3_1_polySurface1
+    3300012: O_swsys_3_5_polySurface1
+    3300014: O_swsys_3_6_polySurface1
+    3300016: polySurface102
+    3300018: polySurface103
+    3300020: polySurface104
+    3300022: polySurface111
+    3300024: polySurface112
+    3300026: polySurface13
+    3300028: polySurface92
+    3300030: polySurface93
+    3300032: pPlane2
+    3300034: pPlane3
+    3300036: pPlane4
+    3300038: pPlane5
+    3300040: qiang1
+    3300042: polySurface115
+    3300044: polySurface116
+    3300046: polySurface117
+    4300000: qiang1
+    4300002: bolitu2
+    4300004: bolitu1
+    4300006: boli
+    4300008: boli2
+    4300010: miehuoqi
+    4300012: polySurface92
+    4300014: O_swsys_3_1_polySurface1
+    4300016: polySurface103
+    4300018: polySurface104
+    4300020: polySurface112
+    4300022: polySurface111
+    4300024: O_swsys_3_5_polySurface1
+    4300026: polySurface93
+    4300028: O_swsys_3_6_polySurface1
+    4300030: polySurface102
+    4300032: polySurface13
+    4300034: pPlane2
+    4300036: pPlane3
+    4300038: pPlane4
+    4300040: pPlane5
+    4300042: polySurface115
+    4300044: polySurface116
+    4300046: polySurface117
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DNA
+    second: {fileID: 2100000, guid: 46c6bb69393834945b994090ebcee4c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_boli
+    second: {fileID: 2100000, guid: 6c144d3583aa24049802cae46a4ff0f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_menmiehuoqi
+    second: {fileID: 2100000, guid: 42a2a7e4032817e4bb0f468fb971be45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_menmiehuoqi2
+    second: {fileID: 2100000, guid: e29bba58bcaf86343bc78a0360d81c6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi1
+    second: {fileID: 2100000, guid: e1511e501703498458ece587ed6c170f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi2
+    second: {fileID: 2100000, guid: dd3f1453b27e7c84ba47d682228f3e27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi3
+    second: {fileID: 2100000, guid: 7f7c2167d9ac6c2488e6ab1e9702a809, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi4
+    second: {fileID: 2100000, guid: e4be86960fab21642a8a9098b21e6014, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi5
+    second: {fileID: 2100000, guid: ba8d7dd96098124479adca3780a49ae8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi6
+    second: {fileID: 2100000, guid: 5207c81bb430c694787c1458730977f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_miehuoqi7
+    second: {fileID: 2100000, guid: 95ba944ee2ae0a340b3dd58bdabd42b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_nq
+    second: {fileID: 2100000, guid: e364e0e1a0f054b4c98d69513fa18875, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_tx
+    second: {fileID: 2100000, guid: 30b17af6cbb1f5a4eb92451c5ad18cd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_wq
+    second: {fileID: 2100000, guid: b4d562b5c2fcc174f9690b84d236d475, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_xianshi
+    second: {fileID: 2100000, guid: 5f0782fff489e4a46bd0f04e32b552b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_xianshi2
+    second: {fileID: 2100000, guid: 93d9bc14334ff864e8af6a3ab9162b8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_zhuanghuanqi_1
+    second: {fileID: 2100000, guid: 1b048786618fbad4ba5c2bfae5fc03c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_zhuanghuanqi_2
+    second: {fileID: 2100000, guid: a57cf5674286ab943af082c5c61411d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_zhuozipingmu
+    second: {fileID: 2100000, guid: 5c790c97ec4cff64cabdb14f79f66dbe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 9c02f93be5caa1e42b866009c93280af, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

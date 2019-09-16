@@ -180,7 +180,7 @@ public class AnimationOper : MonoBehaviour
 
     public void SetAnimSpeed(float _sp)
     {
-        if (anim!=null)
+        if (anim != null)
         {
             anim.speed = _sp;
         }

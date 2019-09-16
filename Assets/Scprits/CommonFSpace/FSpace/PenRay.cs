@@ -43,6 +43,7 @@ public class PenRay : MonoBehaviour
     {
         _lineRenderer = gameObject.AddComponent<LineRenderer>();
         _lineRenderer.material = new Material(Shader.Find("Unlit/Texture"));
+        Debug.Log(gameObject.name);
 
     }
     private void Start()
@@ -57,7 +58,7 @@ public class PenRay : MonoBehaviour
 
     private void Update()
     {
-        rayLength = 0.5f * FCore.ViewerScale;
+        rayLength = 3 * FCore.ViewerScale;
 
 
         _lineRenderer.SetPosition(0, FCore.penPosition);
