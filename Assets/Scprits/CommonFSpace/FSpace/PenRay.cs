@@ -58,7 +58,7 @@ public class PenRay : MonoBehaviour
 
     private void Update()
     {
-        rayLength = 3 * FCore.ViewerScale;
+        rayLength = 5 * FCore.ViewerScale;
 
 
         _lineRenderer.SetPosition(0, FCore.penPosition);

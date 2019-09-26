@@ -37,6 +37,13 @@ ModelImporter:
     100062: transform2
     100064: polySurface116
     100066: polySurface117
+    100068: polySurface152
+    100070: polySurface153
+    100072: polySurface157
+    100074: polySurface158
+    100076: polySurface159
+    100078: polySurface162
+    100080: polySurface163
     400000: boli
     400002: boli 1
     400004: boli2
@@ -71,6 +78,13 @@ ModelImporter:
     400062: transform2
     400064: polySurface116
     400066: polySurface117
+    400068: polySurface152
+    400070: polySurface153
+    400072: polySurface157
+    400074: polySurface158
+    400076: polySurface159
+    400078: polySurface162
+    400080: polySurface163
     2100000: M_wq
     2100002: M_nq
     2100004: M_xianshi
@@ -114,6 +128,13 @@ ModelImporter:
     2300042: polySurface115
     2300044: polySurface116
     2300046: polySurface117
+    2300048: polySurface152
+    2300050: polySurface153
+    2300052: polySurface157
+    2300054: polySurface158
+    2300056: polySurface159
+    2300058: polySurface162
+    2300060: polySurface163
     3300000: boli 1
     3300002: boli2
     3300004: bolitu1
@@ -138,6 +159,13 @@ ModelImporter:
     3300042: polySurface115
     3300044: polySurface116
     3300046: polySurface117
+    3300048: polySurface152
+    3300050: polySurface153
+    3300052: polySurface157
+    3300054: polySurface158
+    3300056: polySurface159
+    3300058: polySurface162
+    3300060: polySurface163
     4300000: qiang1
     4300002: bolitu2
     4300004: bolitu1
@@ -162,6 +190,13 @@ ModelImporter:
     4300042: polySurface115
     4300044: polySurface116
     4300046: polySurface117
+    4300048: polySurface152
+    4300050: polySurface153
+    4300052: polySurface157
+    4300054: polySurface158
+    4300056: polySurface159
+    4300058: polySurface163
+    4300060: polySurface162
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -290,16 +325,16 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

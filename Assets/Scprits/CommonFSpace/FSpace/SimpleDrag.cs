@@ -124,6 +124,26 @@ namespace FSpace
 
         public void OnKey0Up()
         {
+            if (is3DMove)//3D拖拽状态
+            {
+                if (_curDragObj == null)
+                {
+                    return;
+                }
+                _curDragObj.gameObject.GetBoxCollider().enabled = false;
+                RaycastHit raycastHit;
+                GameObject hitObj = Raycast(out raycastHit);
+                if (hitObj != null && hitObj.layer == 11)
+                {
+                    FCore.deleteDragObj(_curDragObj);
+                    DragCallback?.Invoke(_curDragObj.transform, hitObj.transform);
+                    //Debug.LogError("error");
+                }
+                else
+                {
+                    _curDragObj.gameObject.GetBoxCollider().enabled = true;
+                }
+            }
             is3DMove = false;
             //移出抓取的物体
             FCore.deleteDragObj(_curDragObj);
@@ -143,23 +163,10 @@ namespace FSpace
                     Drag2DObj();
                 }
 
-                if (Input.GetMouseButtonUp(0))
-                {
-                    OnMouseBtnUp();
-                }
-            }
-            else
-            {
-                if (is3DMove)//3D拖拽状态
-                {
-                    RaycastHit raycastHit;
-                    GameObject hitObj = Raycast(out raycastHit);
-                    if (hitObj != null && hitObj.layer == 11)
-                    {
-                        FCore.deleteDragObj(_curDragObj);
-                        DragCallback?.Invoke(_curDragObj.transform, hitObj.transform);
-                    }
-                }
+                //if (Input.GetMouseButtonUp(0))
+                //{
+                //    OnMouseBtnUp();
+                //}
             }
         }
 
@@ -216,7 +223,7 @@ namespace FSpace
                 if (GlobalConfig.Instance.operationModel == OperationModel.Move)
                 {
                     xuexue.common.drag2dtool.DragRecord dr = Drag2DTool.Instance.addDragObj(_curDragObj, camera2D);
-                    dr.SetOnMouseMove(DragCall, 0);
+                    dr.SetStopWhenMouseUp(DragCall, -1);
                 }
                 else if (GlobalConfig.Instance.operationModel == OperationModel.Rotate)
                 {
@@ -226,13 +233,15 @@ namespace FSpace
             }
         }
 
-        //拖拽过程区域检测回调 每一帧
+        //拖拽过程区域检测回调 鼠标抬起
         void DragCall(xuexue.common.drag2dtool.DragRecord record)
         {
+            //Debug.LogError("drag");
             if (DragCallback == null)
             {
                 return;
             }
+            //Debug.LogError("drag");
             RaycastHit raycastHit;
             Ray ray = Monitor23DMode.instance.camera2D.ScreenPointToRay(Input.mousePosition);
             var uiDis = 1000f;//鼠标到UI的距离
@@ -240,6 +249,8 @@ namespace FSpace
             {
                 uiDis = Monitor23DMode.instance.f3DSpaceInputModule.hitUIDis;
             }
+
+            record.dragObj.gameObject.GetBoxCollider().enabled = false;
             if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity, 1 << 11))
             {
                 if (uiDis < raycastHit.distance)//通过鼠标到UI跟鼠标到物体的距离判断是否进行对模型操作
@@ -249,6 +260,11 @@ namespace FSpace
                 xuexue.common.drag2dtool.Drag2DTool.Instance.deleteDragObj(record.dragObj.gameObject);
                 DragCallback?.Invoke(record.dragObj, raycastHit.transform);//当前拖拽物体和射线打中物体
             }
+            else
+            {
+                record.dragObj.gameObject.GetBoxCollider().enabled = true;
+            }
+            //OnMouseBtnUp();
         }
     }
 }

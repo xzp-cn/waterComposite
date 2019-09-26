@@ -257,7 +257,6 @@ GameObject:
   - component: {fileID: 4004290441775834}
   - component: {fileID: 20141915099925884}
   - component: {fileID: 81095929160778056}
-  - component: {fileID: 114609398614772902}
   m_Layer: 0
   m_Name: CameraAR
   m_TagString: Untagged
@@ -902,7 +901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAutoSlant: 0
-  ViewerScale: 8
+  ViewerScale: 5
 --- !u!114 &114525590697163114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,19 +921,6 @@ MonoBehaviour:
   rf: {fileID: 8400000, guid: f28fc788b302d2b4da1850463e176263, type: 2}
   vrCamObj: {fileID: 0}
   arCamObj: {fileID: 1754131395405468}
---- !u!114 &114609398614772902
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1754131395405468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e15b1721f9a20644a097d8b56e1400d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arCam: {fileID: 4004290441775834}
-  isDebug: 0
 --- !u!114 &114694783736295486
 MonoBehaviour:
   m_ObjectHideFlags: 1

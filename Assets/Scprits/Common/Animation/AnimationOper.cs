@@ -109,7 +109,7 @@ public class AnimationOper : MonoBehaviour
         if (IsStart)
         {
             var asif = anim.GetCurrentAnimatorStateInfo(0);
-            if (asif.IsName("Base." + animName))
+            if (asif.IsName("Base Layer." + animName))
             {
                 //timeLength = anim.GetCurrentAnimatorStateInfo(0).length;
                 if (currLength <= timeLength)

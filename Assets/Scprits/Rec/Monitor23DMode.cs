@@ -117,7 +117,7 @@ namespace liu
             PenRayObj?.SetActive(false);
             f3DSpaceInputModule.is3D = false;
         }
-
+        public System.Action to3dAction;
         void Update()
         {
 
@@ -153,6 +153,8 @@ namespace liu
                 if (OCVData._data.GlassStatus == 1)
                 {
                     is3D = true;
+                    to3dAction?.Invoke();
+                    to3dAction = null;
                 }
                 else
                 {
@@ -160,6 +162,7 @@ namespace liu
                 }
                 lastGlassStatus = OCVData._data.GlassStatus;
             }
+
 
 
             Set23DUIModel();

@@ -8,7 +8,7 @@ public class Equation : MonoBehaviour
     }
     private void Start()
     {
-        transform.localPosition = new Vector3(0, 266, 6.571f);
+        // transform.localPosition = new Vector3(0, 266, 1.768f);
     }
     /// <summary>
     /// 左边字体表示

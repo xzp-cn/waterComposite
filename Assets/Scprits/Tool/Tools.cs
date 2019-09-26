@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 public class Tools
 {
     static Dictionary<string, GameObject> sceneObjDic = new Dictionary<string, GameObject>();
