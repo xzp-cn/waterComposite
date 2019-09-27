@@ -1608,7 +1608,8 @@ public class GameCtrl : MonoBehaviour
         }
         micro_posNeg.gameObject.SetActive(true);
 
-        MrSys.transform.localPosition = new Vector3(0, 0, 0);
+        MrSys.transform.localPosition = new Vector3(0, 0, 0.3f);
+        //MrSys.transform.localPosition = new Vector3(0, 0, 0);
         cam3D.enabled = true;
         //播动画      
         Transform weiguan = transform.Find("huaxue_weiguan");
